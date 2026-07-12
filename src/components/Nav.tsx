@@ -1,6 +1,9 @@
 export default function Nav() {
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between border-b-[0.5px] border-linen bg-bg/90 px-6 py-4 backdrop-blur-sm">
+    <nav
+      aria-label="Primary"
+      className="sticky top-0 z-50 flex items-center justify-between border-b-[0.5px] border-linen bg-bg/90 px-6 py-4 backdrop-blur-sm"
+    >
       <span className="text-xl font-bold lowercase text-primary-dark">skeined.</span>
       <a
         href="#waitlist-form"
