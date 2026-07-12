@@ -2,6 +2,17 @@
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
+    borderRadius: {
+      none: '0px',
+      sm: '4px',
+      md: '8px',
+      lg: '12px',
+      pill: '9999px',
+    },
+    boxShadow: {
+      DEFAULT: '0 1px 4px rgba(0,0,0,0.08)',
+      none: 'none',
+    },
     extend: {
       colors: {
         bg: '#FAF6F0',
@@ -20,15 +31,6 @@ export default {
       },
       fontFamily: {
         sans: ['Urbanist', 'sans-serif'],
-      },
-      borderRadius: {
-        sm: '4px',
-        md: '8px',
-        lg: '12px',
-        pill: '9999px',
-      },
-      boxShadow: {
-        DEFAULT: '0 1px 4px rgba(0,0,0,0.08)',
       },
       keyframes: {
         marquee: {
