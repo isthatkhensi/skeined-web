@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply overflow-x-hidden font-sans text-ink antialiased;
+    font-family: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+    background-color: #f7f7f7;
+  }
+}
+
+@layer utilities {
+  /* Soft "cloudy" lavender hero — layered radial glows over a medium lavender
+     base so large white text stays legible while feeling light and airy. */
+  .hero-cloud {
+    background-color: #9585c0;
+    background-image:
+      radial-gradient(55% 45% at 20% 22%, rgba(224, 218, 240, 0.55) 0%, rgba(224, 218, 240, 0) 60%),
+      radial-gradient(50% 45% at 84% 18%, rgba(205, 194, 233, 0.5) 0%, rgba(205, 194, 233, 0) 58%),
+      radial-gradient(48% 42% at 10% 78%, rgba(223, 216, 242, 0.55) 0%, rgba(223, 216, 242, 0) 60%),
+      radial-gradient(52% 46% at 90% 84%, rgba(214, 205, 238, 0.55) 0%, rgba(214, 205, 238, 0) 60%),
+      radial-gradient(60% 50% at 50% 96%, rgba(228, 222, 246, 0.55) 0%, rgba(228, 222, 246, 0) 62%),
+      radial-gradient(70% 55% at 28% 104%, rgba(206, 194, 234, 0.5) 0%, rgba(206, 194, 234, 0) 62%),
+      radial-gradient(70% 55% at 78% 110%, rgba(210, 200, 236, 0.5) 0%, rgba(210, 200, 236, 0) 62%),
+      linear-gradient(180deg, #9c8ecb 0%, #8b7ab7 100%);
+  }
+
+  /* Fade the left/right edges of the testimonial marquee */
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+
+  /* Dashed vertical connector line for the steps section */
+  .step-connector {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(38, 36, 36, 0.28) 55%,
+      transparent 0
+    );
+    background-size: 1px 8px;
+    background-repeat: repeat-y;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none !important;
+  }
+}
