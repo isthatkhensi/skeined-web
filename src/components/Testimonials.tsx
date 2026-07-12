@@ -29,9 +29,18 @@ const TESTIMONIALS = [
   },
 ]
 
-function TestimonialCard({ quote, name, craft, initial }: (typeof TESTIMONIALS)[number]) {
+function TestimonialCard({
+  quote,
+  name,
+  craft,
+  initial,
+  hidden,
+}: (typeof TESTIMONIALS)[number] & { hidden?: boolean }) {
   return (
-    <div className="w-80 shrink-0 rounded-md border-[0.5px] border-linen bg-surface p-5 shadow">
+    <div
+      className="w-80 shrink-0 rounded-md border-[0.5px] border-linen bg-surface p-5 shadow"
+      aria-hidden={hidden || undefined}
+    >
       <p className="text-sm text-text-2">&ldquo;{quote}&rdquo;</p>
       <div className="mt-4 flex items-center gap-3">
         <div className="flex h-9 w-9 items-center justify-center rounded-pill bg-primary-light text-sm font-semibold text-primary-dark">
@@ -60,7 +69,7 @@ export default function Testimonials() {
 
       <div className="mt-12 flex w-max animate-marquee gap-6 px-6 hover:[animation-play-state:paused]">
         {loop.map((t, i) => (
-          <TestimonialCard key={`${t.name}-${i}`} {...t} />
+          <TestimonialCard key={`${t.name}-${i}`} {...t} hidden={i >= TESTIMONIALS.length} />
         ))}
       </div>
     </section>

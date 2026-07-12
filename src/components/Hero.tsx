@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
-import { Lock } from 'lucide-react'
+import { Check, Lock } from 'lucide-react'
 import ProgressBar from './ui/ProgressBar'
 import PhoneMockup from './ui/PhoneMockup'
 
@@ -144,7 +144,7 @@ export default function Hero() {
               </button>
             </div>
             {errors.email && (
-              <p className="mt-2 text-left text-sm text-red-500">
+              <p role="alert" className="mt-2 text-left text-sm text-red-500">
                 Enter a valid email address.
               </p>
             )}
@@ -159,6 +159,7 @@ export default function Hero() {
           </form>
         ) : (
           <motion.div
+            role="status"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             className="rounded-md border-[0.5px] border-linen bg-sage-light p-4 text-sm font-semibold text-primary-dark"
@@ -175,9 +176,18 @@ export default function Hero() {
         variants={fadeUp}
         className="mx-auto mt-6 flex max-w-md flex-col items-start gap-2 text-sm text-text-2"
       >
-        <li>✓ Early access before public launch</li>
-        <li>✓ skeined+ Pro locked at R499 — yours forever</li>
-        <li>✓ Direct line to the founder during beta</li>
+        <li className="flex items-center gap-2">
+          <Check className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+          Early access before public launch
+        </li>
+        <li className="flex items-center gap-2">
+          <Check className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+          skeined+ Pro locked at R499 — yours forever
+        </li>
+        <li className="flex items-center gap-2">
+          <Check className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+          Direct line to the founder during beta
+        </li>
       </motion.ul>
 
       <motion.div custom={7} initial="hidden" animate="visible" variants={fadeUp} className="mt-12">
