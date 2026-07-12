@@ -600,7 +600,7 @@ interface PhoneMockupProps {
 export default function PhoneMockup({ children, className = '' }: PhoneMockupProps) {
   return (
     <div
-      className={`relative mx-auto h-[572px] w-[280px] rounded-[40px] bg-[#111111] p-3 shadow-lg ${className}`}
+      className={`relative mx-auto h-[572px] w-[280px] rounded-[40px] bg-[#111111] p-3 shadow ${className}`}
     >
       <div className="absolute left-1/2 top-3 z-10 h-6 w-28 -translate-x-1/2 rounded-pill bg-[#111111]" />
       <div className="relative h-full w-full overflow-hidden rounded-[28px] bg-bg">
@@ -1167,7 +1167,7 @@ function Step({ step, index, isLast, onActive }: StepProps) {
     <div ref={ref} className="flex gap-4">
       <div className="flex flex-col items-center">
         <div
-          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-pill text-sm font-semibold ${
             isInView ? 'bg-primary-dark text-white' : 'bg-linen text-text-3'
           }`}
         >
@@ -1300,7 +1300,7 @@ function TestimonialCard({ quote, name, craft, initial }: (typeof TESTIMONIALS)[
     <div className="w-80 shrink-0 rounded-md border-[0.5px] border-linen bg-surface p-5 shadow">
       <p className="text-sm text-text-2">&ldquo;{quote}&rdquo;</p>
       <div className="mt-4 flex items-center gap-3">
-        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-light text-sm font-semibold text-primary-dark">
+        <div className="flex h-9 w-9 items-center justify-center rounded-pill bg-primary-light text-sm font-semibold text-primary-dark">
           {initial}
         </div>
         <div>
