@@ -21,10 +21,6 @@ export const supportFaqs: AccordionItem[] = [
     a: "Yes, genuinely lifetime. It's a one-time purchase, not a subscription. You pay once and keep Pro for as long as Skeined exists. No renewals, ever.",
   },
   {
-    q: "I'm a founding member — can I also get Creator?",
-    a: "Yes. Creator is a separate purchase at the normal Creator price. Founding status covers Pro for life; Creator is its own thing on top.",
-  },
-  {
     q: "Is there an Android version?",
     a: ANDROID_AVAILABLE
       ? "Yes — Skeined is available on Android as well as iOS."

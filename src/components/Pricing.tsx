@@ -25,10 +25,10 @@ function Check({ featured }: { featured?: boolean }) {
       aria-hidden="true"
       className="mt-0.5 flex-shrink-0"
     >
-      <circle cx="12" cy="12" r="12" fill={featured ? "#ffffff" : "#B8AACF"} />
+      <circle cx="12" cy="12" r="12" fill={featured ? "#ffffff" : "#849A70"} />
       <path
         d="m7.5 12.3 3 3 6-6.6"
-        stroke={featured ? "#b8aacf" : "#ffffff"}
+        stroke={featured ? "#849a70" : "#ffffff"}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -96,7 +96,7 @@ function TierCard({
     <article
       className={`flex h-full flex-col rounded-card p-8 ${
         tier.featured
-          ? "bg-[#b8aacf] text-ink shadow-lg shadow-primary/25"
+          ? "bg-[#849a70] text-ink shadow-lg shadow-primary/25"
           : "border border-black/[0.06] bg-white text-ink shadow-sm"
       }`}
     >
@@ -199,7 +199,7 @@ export default function Pricing() {
         <Reveal className="mx-auto mb-10 max-w-3xl">
           <div className="relative flex flex-col items-center gap-4 overflow-hidden rounded-card bg-[#eeeff0] px-7 py-7 text-center text-ink shadow-sm sm:flex-row sm:justify-between sm:text-left">
             <div>
-              <span className="mb-2 inline-block rounded-full bg-[#b8aacf] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink">
+              <span className="mb-2 inline-block rounded-full bg-[#849a70] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink">
                 Only 50 spots
               </span>
               <p className="text-xl font-bold">Founding Member — Pro for life</p>
@@ -209,7 +209,7 @@ export default function Pricing() {
             </div>
             <a
               href="#waitlist"
-              className="flex-shrink-0 rounded-full bg-[#b8aacf] px-6 py-3 text-sm font-semibold text-ink transition hover:opacity-90"
+              className="flex-shrink-0 rounded-full bg-[#849a70] px-6 py-3 text-sm font-semibold text-ink transition hover:opacity-90"
             >
               Claim your spot
             </a>
@@ -238,7 +238,7 @@ export default function Pricing() {
           />
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {TIERS.map((tier, i) => (
             <Reveal key={tier.name} delay={i * 0.08}>
               <TierCard tier={tier} currency={currency} period={period} />

@@ -15,9 +15,9 @@ Skeined ("we," "us") is a knitting and crochet companion app, made by MalHQ, bas
 
 **Account information.** Email address, a username, an optional display name and avatar, and which craft you make (knitting/crochet/both). Handled through our authentication provider (Supabase). You can start using Skeined anonymously with limited features before creating a full account.
 
-**Your content.** The patterns you import (PDF files, pasted text, or YouTube links), your projects and row progress, your yarn stash entries — including any photos you take to scan a yarn label — your notes, and, if you're a Creator-tier maker, any designs or voice notes you create. This is yours; we store it to run the app, not to use it for anything else.
+**Your content.** The patterns you import (PDF files, pasted text, or YouTube links), your projects and row progress, your yarn stash entries — including any photos you take to scan a yarn label — and your notes. This is yours; we store it to run the app, not to use it for anything else.
 
-**Purchase information.** Whether you're on Free, Pro, Creator, or hold a Founding Member lifetime purchase. Payment itself is handled entirely by Apple's App Store or Google Play — **we never see or store your card details.** We receive only a confirmation of your subscription/purchase status.
+**Purchase information.** Whether you're on Free or Pro, or hold a Founding Member lifetime purchase. Payment itself is handled entirely by Apple's App Store or Google Play — **we never see or store your card details.** We receive only a confirmation of your subscription/purchase status.
 
 **Usage data.** Session activity, rows counted, streaks — the numbers that power Skeined's own progress features (XP, badges, streaks). Used to run those features and to understand which parts of the app are actually useful, not shared with advertisers.
 
@@ -70,7 +70,7 @@ These terms govern your use of Skeined, made by MalHQ. By creating an account or
 
 ## What Skeined is
 
-A companion app for knitters and crocheters: row counting, pattern import (PDF/paste/YouTube), yarn stash tracking, and progress/gamification features. Free to use, with optional Pro and Creator subscriptions, and a limited-time Founding Member lifetime offer.
+A companion app for knitters and crocheters: row counting, pattern import (PDF/paste/YouTube), yarn stash tracking, and progress/gamification features. Free to use, with an optional Pro subscription, and a limited-time Founding Member lifetime offer.
 
 ## Accounts
 
@@ -78,13 +78,13 @@ You're responsible for the accuracy of your account information and for keeping 
 
 ## Subscriptions and purchases
 
-- **Pro and Creator** are auto-renewing subscriptions (monthly or annual), billed through the Apple App Store or Google Play. Every new account gets a 7-day free trial of Pro; it converts to a paid subscription automatically unless you cancel first, through your App Store or Play Store account settings — we can't cancel it from our side.
-- **Founding Member** is a **one-time, non-recurring purchase**, limited to the first 50 buyers, granting **permanent Pro access** — never billed again. It does not include Creator; a Founding Member who wants Creator pays the normal Creator price, same as anyone else.
+- **Pro** is an auto-renewing subscription (monthly or annual), billed through the Apple App Store or Google Play. Every new account gets a 7-day free trial of Pro; it converts to a paid subscription automatically unless you cancel first, through your App Store or Play Store account settings — we can't cancel it from our side.
+- **Founding Member** is a **one-time, non-recurring purchase**, limited to the first 50 buyers, granting **permanent Pro access** — never billed again.
 - Refunds are handled by Apple or Google per their own policies, not directly by us — we're not able to issue refunds ourselves for purchases made through their stores.
 
 ## Your content
 
-You keep ownership of the patterns, designs, and notes you create or import into Skeined. You're responsible for having the right to use any pattern you import — Skeined is a tool for working with patterns you're entitled to use, not a claim over pattern designers' own copyright. If you publish a design through Creator tools, it remains your intellectual property.
+You keep ownership of the patterns, designs, and notes you create or import into Skeined. You're responsible for having the right to use any pattern you import — Skeined is a tool for working with patterns you're entitled to use, not a claim over pattern designers' own copyright.
 
 ## Using Skeined fairly
 

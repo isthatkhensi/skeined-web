@@ -61,22 +61,6 @@ export const TIERS: Tier[] = [
       ZAR: { monthly: 89, annual: 649 },
     },
   },
-  {
-    name: "Creator",
-    blurb: "For designers who publish and share their own patterns.",
-    features: [
-      "Everything in Pro",
-      "Chart builder & image-to-chart design tools",
-      "Publish and share your own patterns",
-      "Run tester calls for your designs",
-      "Voice notes while designing",
-    ],
-    prices: {
-      USD: { monthly: 9.99, annual: 69.99 },
-      GBP: { monthly: 7.99, annual: 54.99 },
-      ZAR: { monthly: 179, annual: 1299 },
-    },
-  },
 ];
 
 // Founding Member is a one-time lifetime unlock of Pro. R499 (ZAR) is confirmed;
