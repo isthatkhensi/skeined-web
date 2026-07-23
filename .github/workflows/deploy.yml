@@ -52,7 +52,8 @@ jobs:
       # Staging must never be indexed by search engines. Production is left untouched.
       - name: Block search indexing on staging
         if: steps.env.outputs.name == 'staging'
-        run: printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+        run: |
+          printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
 
       - name: Deploy dist/ to ${{ steps.env.outputs.name }} over SSH (rsync)
         uses: easingthemes/ssh-deploy@v5.1.0
