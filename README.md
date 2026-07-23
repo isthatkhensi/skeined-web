@@ -48,25 +48,25 @@ manual cPanel upload.
 On every push to `main`, GitHub Actions (`.github/workflows/deploy.yml`):
 
 1. installs dependencies and runs `npm run build` on a clean machine, and
-2. uploads the resulting `dist/` to cPanel `public_html/` over FTPS.
+2. uploads the resulting `dist/` to cPanel `public_html/` over **SSH/rsync** (key-based).
 
 It's live in ~1–2 minutes. Watch progress (or re-run) in the repo's **Actions** tab.
 
 ### One-time setup — repository secrets
 
-Add these under **GitHub → repo → Settings → Secrets and variables → Actions → New
-repository secret**. The FTP password is never stored in the code.
+Add these under **GitHub → repo → Settings → Secrets and variables → Actions**. Plain FTP
+is disabled on the host, so deploys go over SSH with a dedicated key — no password stored.
 
 | Secret | What it is |
 | --- | --- |
-| `FTP_SERVER` | Your cPanel FTP hostname (e.g. `ftp.skeined.com` or the server IP) |
-| `FTP_USERNAME` | cPanel / FTP account username |
-| `FTP_PASSWORD` | cPanel / FTP account password |
-| `VITE_SUPABASE_URL` | Same value as in your local `.env` |
-| `VITE_SUPABASE_ANON_KEY` | Same value as in your local `.env` (public client key) |
+| `SSH_PRIVATE_KEY` | Private half of the deploy keypair. The matching public key is authorized in cPanel → SSH Access. |
+| `FTP_SERVER` | The server host — reused as the SSH host (`skeined.com`). |
+| `FTP_USERNAME` | cPanel account username — reused as the SSH user. |
+| `VITE_SUPABASE_URL` | Same value as in your local `.env`. |
+| `VITE_SUPABASE_ANON_KEY` | Same value as in your local `.env` (public client key). |
 
-> If you deploy from a dedicated FTP account already pointed at `public_html`, change
-> `server-dir` in `.github/workflows/deploy.yml` from `public_html/` to `./`.
+> The deploy connects on port 22 and writes to `public_html/` (relative to the cPanel
+> account home). Both are set in `.github/workflows/deploy.yml`.
 
 ## Notes
 

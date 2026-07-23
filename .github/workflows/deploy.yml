@@ -34,18 +34,18 @@ jobs:
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: npm run build
 
-      - name: Deploy dist/ to cPanel over FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy dist/ to cPanel over SSH (rsync)
+        uses: easingthemes/ssh-deploy@v5.1.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./dist/
-          # Where the files land on the server. For the primary/root domain using
-          # your main cPanel login, this is public_html/. If you instead created a
-          # dedicated FTP account already scoped to public_html, change this to ./
-          server-dir: public_html/
-          # Only changed files are uploaded; nothing on the server is deleted unless
-          # it was part of a previous deploy. Safe alongside other files in public_html.
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          # FTP_SERVER / FTP_USERNAME are reused here as the SSH host + user
+          # (host = skeined.com, user = your cPanel username). Port 22 = SSH.
+          REMOTE_HOST: ${{ secrets.FTP_SERVER }}
+          REMOTE_USER: ${{ secrets.FTP_USERNAME }}
+          REMOTE_PORT: "22"
+          SOURCE: dist/
+          # Relative to the cPanel account home (/home/<user>/), so this is public_html.
+          TARGET: public_html/
+          # Default rsync args (no --delete): uploads/updates changed files only,
+          # never removes existing server files. Excludes cPanel-managed AutoSSL dir.
+          EXCLUDE: ".well-known/"
