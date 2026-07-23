@@ -41,16 +41,22 @@ src/
 
 ## Deploying (automatic)
 
-The site deploys itself. **To publish a change: commit and push to `main`** — in VS Code
-that's the Source Control panel → *Commit* → *Sync/Push*. No `npm run build`, no zip, no
-manual cPanel upload.
+The site deploys itself over SSH — no `npm run build`, no zip, no manual cPanel upload.
+There are two environments, each tied to a branch:
 
-On every push to `main`, GitHub Actions (`.github/workflows/deploy.yml`):
+| Push / merge to | Deploys to | For |
+| --- | --- | --- |
+| `develop` | **staging.skeined.com** | Previewing changes |
+| `main` | **skeined.com** | Production (customers) |
 
-1. installs dependencies and runs `npm run build` on a clean machine, and
-2. uploads the resulting `dist/` to cPanel `public_html/` over **SSH/rsync** (key-based).
+**Do not commit directly to `main` or `develop`** — they're protected. Work on a feature
+branch and open a Pull Request. The full playbook (with copy-paste commands) is in
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
-It's live in ~1–2 minutes. Watch progress (or re-run) in the repo's **Actions** tab.
+On every merge, GitHub Actions (`.github/workflows/deploy.yml`) runs `npm run build` on a
+clean machine and rsyncs `dist/` to the right cPanel folder over key-based SSH. Live in
+~1–2 minutes. Every Pull Request also runs a build check (`.github/workflows/ci.yml`) that
+must pass before it can merge. Watch everything in the repo's **Actions** tab.
 
 ### One-time setup — repository secrets
 

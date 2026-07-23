@@ -1,19 +1,21 @@
-name: Deploy to cPanel
+name: Deploy
 
-# Publishes the site on every push to `main`.
-# You can also trigger it manually from the GitHub "Actions" tab.
+# Publishes the site automatically:
+#   push to main    -> production  (skeined.com,        public_html/)
+#   push to develop -> staging     (staging.skeined.com, staging/)
+# Both fire on merge of a Pull Request. Manual runs available under the Actions tab.
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
   workflow_dispatch:
 
-# Prevent two deploys running at once (a fast follow-up push cancels the older run).
+# One in-flight deploy per environment; a newer push supersedes an older one.
 concurrency:
-  group: production-deploy
+  group: deploy-${{ github.ref_name }}
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the code
@@ -28,24 +30,43 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Select environment
+        id: env
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "name=production" >> "$GITHUB_OUTPUT"
+            echo "target=public_html/" >> "$GITHUB_OUTPUT"
+            echo "url=https://skeined.com/" >> "$GITHUB_OUTPUT"
+          else
+            echo "name=staging" >> "$GITHUB_OUTPUT"
+            echo "target=staging/" >> "$GITHUB_OUTPUT"
+            echo "url=https://staging.skeined.com/" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build the site
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: npm run build
 
-      - name: Deploy dist/ to cPanel over SSH (rsync)
+      # Staging must never be indexed by search engines. Production is left untouched.
+      - name: Block search indexing on staging
+        if: steps.env.outputs.name == 'staging'
+        run: printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+
+      - name: Deploy dist/ to ${{ steps.env.outputs.name }} over SSH (rsync)
         uses: easingthemes/ssh-deploy@v5.1.0
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          # FTP_SERVER / FTP_USERNAME are reused here as the SSH host + user
-          # (host = skeined.com, user = your cPanel username). Port 22 = SSH.
+          # FTP_SERVER / FTP_USERNAME reused as SSH host + user. Port 22 = SSH.
           REMOTE_HOST: ${{ secrets.FTP_SERVER }}
           REMOTE_USER: ${{ secrets.FTP_USERNAME }}
           REMOTE_PORT: "22"
           SOURCE: dist/
-          # Relative to the cPanel account home (/home/<user>/), so this is public_html.
-          TARGET: public_html/
-          # Default rsync args (no --delete): uploads/updates changed files only,
-          # never removes existing server files. Excludes cPanel-managed AutoSSL dir.
+          # Relative to the cPanel account home (/home/<user>/).
+          TARGET: ${{ steps.env.outputs.target }}
+          # No --delete by default: uploads/updates only, never removes server files.
           EXCLUDE: ".well-known/"
+
+      - name: Deploy summary
+        run: echo "✅ Deployed \`${{ github.sha }}\` to **${{ steps.env.outputs.name }}** → ${{ steps.env.outputs.url }}" >> "$GITHUB_STEP_SUMMARY"
