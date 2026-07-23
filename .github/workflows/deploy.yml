@@ -1,0 +1,51 @@
+name: Deploy to cPanel
+
+# Publishes the site on every push to `main`.
+# You can also trigger it manually from the GitHub "Actions" tab.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Prevent two deploys running at once (a fast follow-up push cancels the older run).
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the site
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        run: npm run build
+
+      - name: Deploy dist/ to cPanel over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/
+          # Where the files land on the server. For the primary/root domain using
+          # your main cPanel login, this is public_html/. If you instead created a
+          # dedicated FTP account already scoped to public_html, change this to ./
+          server-dir: public_html/
+          # Only changed files are uploaded; nothing on the server is deleted unless
+          # it was part of a previous deploy. Safe alongside other files in public_html.

@@ -18,16 +18,16 @@
   /* Soft "cloudy" lavender hero — layered radial glows over a medium lavender
      base so large white text stays legible while feeling light and airy. */
   .hero-cloud {
-    background-color: #9585c0;
+    background-color: #849a70;
     background-image:
-      radial-gradient(55% 45% at 20% 22%, rgba(224, 218, 240, 0.55) 0%, rgba(224, 218, 240, 0) 60%),
-      radial-gradient(50% 45% at 84% 18%, rgba(205, 194, 233, 0.5) 0%, rgba(205, 194, 233, 0) 58%),
-      radial-gradient(48% 42% at 10% 78%, rgba(223, 216, 242, 0.55) 0%, rgba(223, 216, 242, 0) 60%),
-      radial-gradient(52% 46% at 90% 84%, rgba(214, 205, 238, 0.55) 0%, rgba(214, 205, 238, 0) 60%),
-      radial-gradient(60% 50% at 50% 96%, rgba(228, 222, 246, 0.55) 0%, rgba(228, 222, 246, 0) 62%),
-      radial-gradient(70% 55% at 28% 104%, rgba(206, 194, 234, 0.5) 0%, rgba(206, 194, 234, 0) 62%),
-      radial-gradient(70% 55% at 78% 110%, rgba(210, 200, 236, 0.5) 0%, rgba(210, 200, 236, 0) 62%),
-      linear-gradient(180deg, #9c8ecb 0%, #8b7ab7 100%);
+      radial-gradient(55% 45% at 20% 22%, rgba(219, 225, 213, 0.45) 0%, rgba(219, 225, 213, 0) 60%),
+      radial-gradient(50% 45% at 84% 18%, rgba(196, 206, 186, 0.45) 0%, rgba(196, 206, 186, 0) 58%),
+      radial-gradient(48% 42% at 10% 78%, rgba(219, 225, 213, 0.5) 0%, rgba(219, 225, 213, 0) 60%),
+      radial-gradient(52% 46% at 90% 84%, rgba(196, 206, 186, 0.5) 0%, rgba(196, 206, 186, 0) 60%),
+      radial-gradient(60% 50% at 50% 96%, rgba(210, 216, 200, 0.5) 0%, rgba(210, 216, 200, 0) 62%),
+      radial-gradient(70% 55% at 28% 104%, rgba(104, 122, 87, 0.55) 0%, rgba(104, 122, 87, 0) 62%),
+      radial-gradient(70% 55% at 78% 110%, rgba(81, 95, 68, 0.5) 0%, rgba(81, 95, 68, 0) 62%),
+      linear-gradient(180deg, #8ba676 0%, #647d50 100%);
   }
 
   /* Fade the left/right edges of the testimonial marquee */

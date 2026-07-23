@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         page: "#f7f7f7", // site background
-        hero: "#8571b0", // lavender hero base — deep enough for white text
-        primary: "#B8AACF", // lavender — CTAs, active states
-        "primary-light": "#DDD7EC", // highlights
+        hero: "#687A57", // green hero base — deep enough for white text
+        primary: "#849A70", // Skeined green — CTAs, active states
+        "primary-light": "#C4CEBA", // light green highlights
         ink: "#2E2A27", // text-1 — warm charcoal for headings/body (softer than black)
         card: "#E6DDF3", // clearly lilac card background
         muted: "#6B5548", // text-2 — warm secondary copy

@@ -160,7 +160,7 @@ export default function Hero() {
                 aria-valuemax={SPOTS_TOTAL}
               >
                 <div
-                  className="h-full rounded-full bg-[#b8aacf]"
+                  className="h-full rounded-full bg-[#849a70]"
                   style={{ width: `${claimedPct}%` }}
                 />
               </div>
