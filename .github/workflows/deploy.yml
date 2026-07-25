@@ -39,7 +39,7 @@ jobs:
             echo "url=https://skeined.com/" >> "$GITHUB_OUTPUT"
           else
             echo "name=staging" >> "$GITHUB_OUTPUT"
-            echo "target=staging/" >> "$GITHUB_OUTPUT"
+            echo "target=public_html/staging.skeined.com/" >> "$GITHUB_OUTPUT"
             echo "url=https://staging.skeined.com/" >> "$GITHUB_OUTPUT"
           fi
 
