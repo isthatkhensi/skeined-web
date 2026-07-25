@@ -1,6 +1,8 @@
-# Nearo — Waitlist Landing (Clone)
+# Skeined — Marketing Site
 
-A faithful clone of the [Nearo waitlist template](https://nearo-temlis.framer.website/), rebuilt as a modern React app.
+The marketing and early-access waitlist site for **Skeined**, the calmest way to import
+knitting and crochet patterns, follow clear charts, and never lose your place in a row.
+Live at **[skeined.com](https://skeined.com)**.
 
 ## Tech stack
 
@@ -8,36 +10,37 @@ A faithful clone of the [Nearo waitlist template](https://nearo-temlis.framer.we
 - **TypeScript**
 - **Tailwind CSS v3** for styling
 - **Framer Motion** for scroll-reveal animations and hero transitions
-- **react-hook-form** for the email waitlist form (with validation)
-- Semantic HTML, mobile-first responsive design
-- Full meta / Open Graph / Twitter tags for social sharing
+- **react-hook-form** for the waitlist form (with validation)
+- **Supabase** for the waitlist backend
+- **react-router-dom** for the legal/support pages
+- Semantic HTML, mobile-first responsive design, full Open Graph / Twitter meta
 
 ## Getting started
 
 ```bash
 npm install
-npm run dev      # start the dev server (http://localhost:5173)
-npm run build    # type-check + production build to /dist
-npm run preview  # preview the production build
+cp .env.example .env   # then fill in the Supabase values
+npm run dev            # start the dev server (http://localhost:5173)
+npm run build          # type-check + production build to /dist
+npm run preview        # preview the production build
 ```
 
 ## Structure
 
 ```
 src/
-  components/
-    Hero.tsx          # hero + waitlist form (react-hook-form) + Framer Motion intro
-    Features.tsx      # "Features designed for your success" 2×2 grid
-    FeatureCard.tsx   # shared card (used by Features + Steps)
-    Steps.tsx         # "Get started in 3 simple steps" with numbered rail
-    Testimonials.tsx  # infinite CSS marquee of beta-client quotes
-    Footer.tsx        # dark footer
-    Brand.tsx         # Nearo wordmark + glyph
-    Reveal.tsx        # reusable scroll-into-view animation wrapper
+  components/          # Hero, Features, Steps, Pricing, Testimonials, Footer, Brand, …
+  pages/              # Legal + support routes (Privacy, Terms, Support, Get, …)
+  content/            # FAQ and legal copy
+  lib/                # supabase client, pricing, links
   data.ts             # feature / step / testimonial content + asset imports
-  assets/             # images downloaded from the original site
+  assets/             # site imagery
   index.css           # Tailwind layers + marquee/connector utilities
 ```
+
+Design tokens (colors, radius, fonts) live in `tailwind.config.js` under `theme.extend`.
+The logo is an inline SVG in `components/Brand.tsx` that inherits its color from context
+(white on dark surfaces, ink on light). Animations respect `prefers-reduced-motion`.
 
 ## Deploying (automatic)
 
@@ -71,12 +74,5 @@ is disabled on the host, so deploys go over SSH with a dedicated key — no pass
 | `VITE_SUPABASE_URL` | Same value as in your local `.env`. |
 | `VITE_SUPABASE_ANON_KEY` | Same value as in your local `.env` (public client key). |
 
-> The deploy connects on port 22 and writes to `public_html/` (relative to the cPanel
-> account home). Both are set in `.github/workflows/deploy.yml`.
-
-## Notes
-
-- The waitlist form validates the email client-side and logs the value on submit
-  (`console.info`) — wire `onSubmit` in `Hero.tsx` to your backend/ESP.
-- Design tokens (colors, radius) live in `tailwind.config.js` under `theme.extend`.
-- Animations respect `prefers-reduced-motion`.
+> Production writes to `public_html/`; staging writes to `public_html/staging.skeined.com/`.
+> Both targets are set per-branch in `.github/workflows/deploy.yml`.
