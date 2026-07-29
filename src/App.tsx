@@ -21,6 +21,8 @@ export default function App() {
 
         {/* Footer-linked content pages */}
         <Route path="/privacy" element={<Privacy />} />
+        {/* the app links to /privacy-policy (constants/links.ts); /privacy kept as an alias */}
+        <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/support" element={<Support />} />
 
