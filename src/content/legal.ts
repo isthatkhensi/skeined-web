@@ -27,6 +27,8 @@ Skeined ("we," "us") is a knitting and crochet companion app, made by MalHQ, bas
 
 Some features are powered by a third-party AI provider (Anthropic). When you import a pattern (PDF, pasted text, or a YouTube link), scan a yarn label, or ask the in-app craft assistant a question, that content is sent from our own servers to Anthropic to be read and turned into a structured pattern or an answer. This always happens through our backend — never directly from your device to Anthropic — and your content is not used by Anthropic to train their models under our agreement with them. This is genuinely how the "paste a messy pattern, get a clean counter" feature (and the craft assistant) work — we're telling you plainly rather than burying it.
 
+We also learn from how imported patterns parse. When a pattern's structure trips the importer — an unusual repeat, a section layout we didn't handle well — we may review that pattern's *structure* to improve the parser for everyone. That's how "paste a messy pattern, get a clean counter" keeps getting better, and your imports are what make it better for the next maker. It never means your patterns are sold, published, shared with other users, or used to train third-party AI models.
+
 ## Who else sees your data
 
 - **Supabase** — hosts our database and handles authentication.
