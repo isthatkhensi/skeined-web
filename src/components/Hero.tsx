@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import Brand from "./Brand";
 import Countdown from "./Countdown";
 import heroMockup from "../assets/skeined-counter.png";
 import { detectCurrency, FOUNDING_PRICE } from "../lib/pricing";
+import { supabase } from "../lib/supabase";
 
 interface WaitlistForm {
   email: string;
 }
+
+type SubmitStatus = "idle" | "success" | "error";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -27,18 +31,42 @@ export default function Hero() {
     ((SPOTS_TOTAL - SPOTS_LEFT) / SPOTS_TOTAL) * 100
   );
 
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm<WaitlistForm>();
 
-  const onSubmit = (data: WaitlistForm) => {
-    // TODO(founder): wire up Loops.so once the account + sequences are ready:
-    //   POST https://app.loops.so/api/v1/contacts/create  { email, source: "waitlist-landing" }
-    // Proxy through a serverless function so the API key isn't exposed client-side.
-    console.info("Waitlist signup:", data.email);
+  const onSubmit = async (data: WaitlistForm) => {
+    setStatus("idle");
+
+    if (!supabase) {
+      // Local/unconfigured build — nothing to call. Don't pretend it worked.
+      setStatus("error");
+      return;
+    }
+
+    const { error } = await supabase.rpc("join_waitlist", {
+      p_email: data.email.trim(),
+      p_source: "website",
+      p_referrer:
+        typeof document !== "undefined" && document.referrer
+          ? document.referrer
+          : null,
+    });
+
+    if (error) {
+      // Never distinguish "already on the list" from any other failure here —
+      // join_waitlist() itself treats duplicates as a silent success, so a
+      // real error means something else went wrong (network, validation).
+      setStatus("error");
+      return;
+    }
+
+    setStatus("success");
     reset();
   };
 
@@ -103,7 +131,7 @@ export default function Hero() {
               noValidate
               className="mx-auto mt-7 w-[min(440px,90vw)] scroll-mt-24 lg:mx-0"
             >
-              <div className="flex items-center gap-2 rounded-full border border-white/20 bg-gradient-to-b from-white/10 to-white/25 p-[7px] pl-2 shadow-[inset_0_-4px_100px_20px_rgba(238,238,238,0.08)] backdrop-blur-xl">
+              <div className="flex items-center gap-2 rounded-full border border-white/20 bg-gradient-to-b from-white/10 to-white/25 p-[7px] pl-2 shadow-[inset_0_-4px_100px_20px_rgba(238,238,238,0.08)] backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-white/80 focus-within:ring-offset-2 focus-within:ring-offset-hero">
                 <label htmlFor="email" className="sr-only">
                   Your email address
                 </label>
@@ -111,32 +139,46 @@ export default function Hero() {
                   id="email"
                   type="email"
                   placeholder="Your email address"
+                  autoComplete="email"
+                  disabled={isSubmitting}
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
                       value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
                       message: "Enter a valid email",
                     },
+                    onChange: () => setStatus("idle"),
                   })}
-                  className="min-w-0 flex-1 bg-transparent pl-3.5 text-[15px] text-white placeholder:text-white/80 focus:outline-none"
+                  className="min-w-0 flex-1 bg-transparent pl-3.5 text-[15px] text-white placeholder:text-white/80 focus:outline-none disabled:opacity-60"
                 />
                 <button
                   type="submit"
-                  className="flex-shrink-0 rounded-full bg-white px-5 py-3 text-[13px] font-semibold text-ink transition hover:-translate-y-px hover:opacity-90"
+                  disabled={isSubmitting}
+                  className="flex-shrink-0 rounded-full bg-white px-5 py-3 text-[13px] font-semibold text-ink transition hover:-translate-y-px hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink disabled:opacity-60 disabled:hover:translate-y-0"
                 >
-                  Join waitlist
+                  {isSubmitting ? "Joining…" : "Join waitlist"}
                 </button>
               </div>
               <div
-                className="mt-2 h-4 text-center text-[13px] lg:text-left"
+                className="mt-2 min-h-[1.25rem] text-center text-[13px] leading-snug lg:text-left"
                 aria-live="polite"
+                role="status"
               >
                 {errors.email && (
                   <span className="text-white/90">{errors.email.message}</span>
                 )}
-                {isSubmitSuccessful && !errors.email && (
+                {!errors.email && status === "success" && (
                   <span className="text-white/90">
-                    You're on the list — we'll be in touch.
+                    You're on the list — thank you for waiting with us. We
+                    don't have automatic emails wired up yet, so there's
+                    nothing in your inbox to watch for just yet — we'll share
+                    the news here (and on @skeined) when Skeined opens.
+                  </span>
+                )}
+                {!errors.email && status === "error" && (
+                  <span className="text-white/90">
+                    That didn't quite make it through — mind trying again in
+                    a moment?
                   </span>
                 )}
               </div>
