@@ -34,7 +34,7 @@ export default function Steps() {
                 {i < steps.length - 1 && (
                   <span className="step-connector absolute left-1/2 top-2 bottom-0 w-px -translate-x-1/2" />
                 )}
-                <span className="relative z-10 grid h-[34px] w-[34px] place-items-center rounded-full bg-[#849a70] text-sm font-medium text-ink">
+                <span className="relative z-10 grid h-[34px] w-[34px] place-items-center rounded-full bg-clay text-sm font-medium text-ink">
                   {step.number}
                 </span>
               </div>

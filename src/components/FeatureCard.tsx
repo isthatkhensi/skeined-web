@@ -16,7 +16,7 @@ export default function FeatureCard({
   ratio = "1728 / 960",
 }: FeatureCardProps) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-card bg-[#eeeff0]">
+    <article className="flex h-full flex-col overflow-hidden rounded-card bg-primary-light">
       <div className="px-[22px] pt-[22px]" style={{ aspectRatio: ratio }}>
         <img
           src={image}

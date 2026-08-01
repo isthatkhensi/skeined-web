@@ -32,7 +32,7 @@ export default function Testimonials() {
             <li
               key={`${t.name}-${i}`}
               aria-hidden={i >= testimonials.length}
-              className="flex w-[300px] flex-shrink-0 flex-col justify-between gap-5 rounded-[20px] bg-[#eeeff0] p-4 sm:w-[380px]"
+              className="flex w-[300px] flex-shrink-0 flex-col justify-between gap-5 rounded-[20px] bg-primary-light p-4 sm:w-[380px]"
             >
               <blockquote className="rounded-2xl border border-white/50 bg-white/50 p-5 text-[16px] font-medium leading-relaxed tracking-[-0.01em] text-ink backdrop-blur-md">
                 {t.quote}
