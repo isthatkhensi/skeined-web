@@ -10,24 +10,30 @@
   body {
     @apply overflow-x-hidden font-sans text-ink antialiased;
     font-family: "Urbanist", ui-sans-serif, system-ui, sans-serif;
-    background-color: #f7f7f7;
+    background-color: #fbf7f2;
   }
 }
 
 @layer utilities {
-  /* Soft "cloudy" lavender hero — layered radial glows over a medium lavender
-     base so large white text stays legible while feeling light and airy. */
+  /* Soft "cloudy" warm-clay hero — layered radial glows over a deep clay/umber
+     base. Note: this is deliberately darker than the app's "hero" token
+     (#B8795A) — the nav links, subhead and status copy here are small/regular
+     white text sitting directly on this background, which needs a true 4.5:1
+     contrast ratio (not just the 3:1 large-text minimum the app's own hero
+     button-label pairing was tuned for). #8F5233 → #74472F keeps every point
+     in the gradient at 4.5:1+ against white, and the light glow opacities are
+     capped so they can't wash that out. */
   .hero-cloud {
-    background-color: #849a70;
+    background-color: #74472f;
     background-image:
-      radial-gradient(55% 45% at 20% 22%, rgba(219, 225, 213, 0.45) 0%, rgba(219, 225, 213, 0) 60%),
-      radial-gradient(50% 45% at 84% 18%, rgba(196, 206, 186, 0.45) 0%, rgba(196, 206, 186, 0) 58%),
-      radial-gradient(48% 42% at 10% 78%, rgba(219, 225, 213, 0.5) 0%, rgba(219, 225, 213, 0) 60%),
-      radial-gradient(52% 46% at 90% 84%, rgba(196, 206, 186, 0.5) 0%, rgba(196, 206, 186, 0) 60%),
-      radial-gradient(60% 50% at 50% 96%, rgba(210, 216, 200, 0.5) 0%, rgba(210, 216, 200, 0) 62%),
-      radial-gradient(70% 55% at 28% 104%, rgba(104, 122, 87, 0.55) 0%, rgba(104, 122, 87, 0) 62%),
-      radial-gradient(70% 55% at 78% 110%, rgba(81, 95, 68, 0.5) 0%, rgba(81, 95, 68, 0) 62%),
-      linear-gradient(180deg, #8ba676 0%, #647d50 100%);
+      radial-gradient(55% 45% at 20% 22%, rgba(224, 168, 134, 0.15) 0%, rgba(224, 168, 134, 0) 60%),
+      radial-gradient(50% 45% at 84% 18%, rgba(224, 168, 134, 0.15) 0%, rgba(224, 168, 134, 0) 58%),
+      radial-gradient(48% 42% at 10% 78%, rgba(246, 229, 218, 0.25) 0%, rgba(246, 229, 218, 0) 60%),
+      radial-gradient(52% 46% at 90% 84%, rgba(246, 229, 218, 0.25) 0%, rgba(246, 229, 218, 0) 60%),
+      radial-gradient(60% 50% at 50% 96%, rgba(246, 229, 218, 0.4) 0%, rgba(246, 229, 218, 0) 62%),
+      radial-gradient(70% 55% at 28% 104%, rgba(58, 33, 20, 0.5) 0%, rgba(58, 33, 20, 0) 62%),
+      radial-gradient(70% 55% at 78% 110%, rgba(40, 22, 13, 0.5) 0%, rgba(40, 22, 13, 0) 62%),
+      linear-gradient(180deg, #8f5233 0%, #74472f 100%);
   }
 
   /* Fade the left/right edges of the testimonial marquee */

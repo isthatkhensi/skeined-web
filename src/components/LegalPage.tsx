@@ -12,7 +12,7 @@ export default function LegalPage({ title, markdown }: LegalPageProps) {
   return (
     <PageShell title={title}>
       {!LEGAL_READY && (
-        <p className="mb-8 rounded-xl border border-primary-light bg-[#dbe1d5] px-5 py-4 text-sm text-muted">
+        <p className="mb-8 rounded-xl border border-linen bg-primary-light px-5 py-4 text-sm text-muted">
           This page is wired up and routed — the verbatim policy copy still needs
           to be pasted into <code>src/content/legal.ts</code>.
         </p>

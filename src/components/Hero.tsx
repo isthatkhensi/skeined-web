@@ -188,25 +188,25 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="mx-auto mt-6 w-[min(440px,90vw)] rounded-xl border border-[#d6d0c2] bg-white p-4 shadow-md shadow-black/5 lg:mx-0"
+              className="mx-auto mt-6 w-[min(440px,90vw)] rounded-xl border border-linen bg-card p-4 shadow-md shadow-black/5 lg:mx-0"
             >
-              <p className="text-sm text-[#2e2a27]">
+              <p className="text-sm text-ink">
                 <span className="font-bold">Founding Members</span> get Pro for
                 life — {founding} once.
               </p>
               <div
-                className="mt-3 h-2 w-full overflow-hidden rounded-full bg-[#d6d0c2]"
+                className="mt-3 h-2 w-full overflow-hidden rounded-full bg-linen"
                 role="progressbar"
                 aria-valuenow={SPOTS_TOTAL - SPOTS_LEFT}
                 aria-valuemin={0}
                 aria-valuemax={SPOTS_TOTAL}
               >
                 <div
-                  className="h-full rounded-full bg-[#849a70]"
+                  className="h-full rounded-full bg-clay"
                   style={{ width: `${claimedPct}%` }}
                 />
               </div>
-              <p className="mt-2 text-xs font-medium text-[#2e2a27]/70">
+              <p className="mt-2 text-xs font-medium text-ink/70">
                 Only {SPOTS_LEFT} of {SPOTS_TOTAL} spots left
               </p>
             </motion.div>
