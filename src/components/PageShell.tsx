@@ -8,7 +8,6 @@ const navLinks = [
   { label: "How it works", href: "/#how-it-works" },
   { label: "Pricing", href: "/#pricing" },
   { label: "FAQs", href: "/#faqs" },
-  { label: "Why", href: "/#why" },
 ];
 
 interface PageShellProps {
