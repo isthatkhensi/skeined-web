@@ -18,7 +18,7 @@ const navLinks = [
   { label: "How it works", href: "#how-it-works" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQs", href: "#faqs" },
-  { label: "Reviews", href: "#reviews" },
+  { label: "Why", href: "#why" },
 ];
 
 // Founding Member isn't purchasable yet, so nobody has claimed a spot — this
