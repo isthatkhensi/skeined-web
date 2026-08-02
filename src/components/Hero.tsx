@@ -21,15 +21,17 @@ const navLinks = [
   { label: "Reviews", href: "#reviews" },
 ];
 
-// TODO(founder): wire these to the live count (Loops/Supabase).
+// Founding Member isn't purchasable yet, so nobody has claimed a spot — this
+// must read as truthfully zero, never fabricated scarcity.
+// TODO(founder): once Founding Member purchases go live, wire SPOTS_CLAIMED to
+// the real count (a Supabase count query / RPC), remove the hardcoded 0, and
+// re-introduce the progress bar once it can reflect real numbers.
 const SPOTS_TOTAL = 50;
-const SPOTS_LEFT = 43;
+const SPOTS_CLAIMED = 0;
 
 export default function Hero() {
   const founding = FOUNDING_PRICE[detectCurrency()];
-  const claimedPct = Math.round(
-    ((SPOTS_TOTAL - SPOTS_LEFT) / SPOTS_TOTAL) * 100
-  );
+  const claimedPct = Math.round((SPOTS_CLAIMED / SPOTS_TOTAL) * 100);
 
   const [status, setStatus] = useState<SubmitStatus>("idle");
 
@@ -72,7 +74,7 @@ export default function Hero() {
 
   return (
     <section className="p-4">
-      <div className="hero-cloud relative flex min-h-[820px] flex-col overflow-hidden rounded-card px-5 pt-7 sm:px-10 lg:px-16">
+      <div className="hero-cloud relative flex min-h-[640px] flex-col overflow-hidden rounded-card px-5 pt-7 sm:min-h-[760px] sm:px-10 lg:min-h-[820px] lg:px-16">
         {/* nav */}
         <nav className="relative z-10 flex w-full items-center justify-between text-white">
           <Brand className="text-white" />
@@ -80,7 +82,10 @@ export default function Hero() {
           <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-sm font-medium text-white/90 lg:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="transition hover:text-white">
+                <a
+                  href={link.href}
+                  className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+                >
                   {link.label}
                 </a>
               </li>
@@ -89,16 +94,16 @@ export default function Hero() {
 
           <a
             href="#waitlist"
-            className="rounded-full bg-white px-5 py-2.5 text-xs font-semibold tracking-wide text-ink transition hover:opacity-90"
+            className="rounded-full bg-white px-5 py-3.5 text-xs font-semibold tracking-wide text-ink transition hover:opacity-90"
           >
             Join waitlist
           </a>
         </nav>
 
         {/* two-column: copy left, phone (with counter under it) right */}
-        <div className="grid flex-1 gap-8 pt-8 lg:grid-cols-2 lg:items-end lg:gap-10">
+        <div className="grid min-w-0 flex-1 gap-8 pt-8 lg:grid-cols-2 lg:items-end lg:gap-10">
           {/* LEFT — copy */}
-          <div className="self-center pb-8 text-center text-white lg:pb-16 lg:text-left">
+          <div className="min-w-0 self-center pb-8 text-center text-white lg:pb-16 lg:text-left">
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -194,26 +199,30 @@ export default function Hero() {
                 <span className="font-bold">Founding Members</span> get Pro for
                 life — {founding} once.
               </p>
-              <div
-                className="mt-3 h-2 w-full overflow-hidden rounded-full bg-linen"
-                role="progressbar"
-                aria-valuenow={SPOTS_TOTAL - SPOTS_LEFT}
-                aria-valuemin={0}
-                aria-valuemax={SPOTS_TOTAL}
-              >
+              {SPOTS_CLAIMED > 0 && (
                 <div
-                  className="h-full rounded-full bg-clay"
-                  style={{ width: `${claimedPct}%` }}
-                />
-              </div>
+                  className="mt-3 h-2 w-full overflow-hidden rounded-full bg-linen"
+                  role="progressbar"
+                  aria-valuenow={SPOTS_CLAIMED}
+                  aria-valuemin={0}
+                  aria-valuemax={SPOTS_TOTAL}
+                >
+                  <div
+                    className="h-full rounded-full bg-clay"
+                    style={{ width: `${claimedPct}%` }}
+                  />
+                </div>
+              )}
               <p className="mt-2 text-xs font-medium text-ink/70">
-                Only {SPOTS_LEFT} of {SPOTS_TOTAL} spots left
+                {SPOTS_CLAIMED > 0
+                  ? `${SPOTS_TOTAL - SPOTS_CLAIMED} of ${SPOTS_TOTAL} spots left`
+                  : `${SPOTS_TOTAL} Founding Member spots — be first to claim one.`}
               </p>
             </motion.div>
           </div>
 
           {/* RIGHT — phone flush to block bottom, counter overlapping its base */}
-          <div className="relative flex justify-center self-end lg:justify-end">
+          <div className="relative flex min-w-0 justify-center self-end lg:justify-end">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}

@@ -42,7 +42,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition hover:border-clay hover:text-white"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/70 transition hover:border-clay hover:text-white"
                   >
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                       <path d={s.path} />
@@ -59,7 +59,10 @@ export default function Footer() {
             <ul className="mt-4 flex flex-col gap-3 text-sm text-white/60">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="transition hover:text-white">
+                  <a
+                    href={link.href}
+                    className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+                  >
                     {link.label}
                   </a>
                 </li>
@@ -88,13 +91,22 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-4 border-t border-white/10 pt-8 text-sm text-white/50 sm:flex-row sm:justify-between">
           <p>© 2026 Skeined. All rights reserved.</p>
           <nav className="flex items-center gap-6">
-            <Link to="/privacy" className="transition hover:text-white">
+            <Link
+              to="/privacy"
+              className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+            >
               Privacy Policy
             </Link>
-            <Link to="/terms" className="transition hover:text-white">
+            <Link
+              to="/terms"
+              className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+            >
               Terms of Service
             </Link>
-            <Link to="/support" className="transition hover:text-white">
+            <Link
+              to="/support"
+              className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+            >
               Support
             </Link>
           </nav>
