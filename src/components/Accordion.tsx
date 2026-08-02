@@ -17,7 +17,9 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
         return (
           <li
             key={i}
-            className="overflow-hidden rounded-2xl border border-black/[0.05] bg-primary-light"
+            className={`overflow-hidden rounded-2xl border bg-clay-wash transition-colors ${
+              isOpen ? "border-clay" : "border-black/[0.05]"
+            }`}
           >
             <button
               type="button"
@@ -29,7 +31,9 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
               <motion.span
                 animate={{ rotate: isOpen ? 45 : 0 }}
                 transition={{ duration: 0.2 }}
-                className="flex-shrink-0 text-2xl font-light leading-none text-primary"
+                className={`flex-shrink-0 text-2xl font-light leading-none transition-colors ${
+                  isOpen ? "text-clay-ink" : "text-faint"
+                }`}
                 aria-hidden="true"
               >
                 +

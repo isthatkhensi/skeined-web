@@ -2,6 +2,11 @@ import { steps } from "../data";
 import FeatureCard from "./FeatureCard";
 import Reveal from "./Reveal";
 
+// Three steps, three tiers — the palette hierarchy shown rather than described:
+// primary clay, secondary sage, tertiary lavender. Every fill carries dark ink,
+// which is the rule that keeps clay looking like clay.
+const STEP_TONE = ["bg-clay text-ink", "bg-sage-tint text-sage-ink", "bg-lavender-tint text-lavender"];
+
 export default function Steps() {
   return (
     <section
@@ -15,11 +20,11 @@ export default function Steps() {
             id="steps-heading"
             className="text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-ink"
           >
-            Get started in 3 simple steps.
+            From pattern to first row, in three steps.
           </h2>
           <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-muted">
-            From download to your first cast-on in minutes — no fuss, no steep
-            learning curve.
+            Getting the app is the easy part. This is the bit that actually
+            saves you an evening.
           </p>
         </Reveal>
 
@@ -39,7 +44,9 @@ export default function Steps() {
                 {i < steps.length - 1 && (
                   <span className="step-connector absolute left-1/2 top-2 bottom-0 w-px -translate-x-1/2" />
                 )}
-                <span className="relative z-10 grid h-[34px] w-[34px] place-items-center rounded-full bg-clay text-sm font-medium text-ink">
+                <span
+                  className={`relative z-10 grid h-[34px] w-[34px] place-items-center rounded-full text-sm font-medium ${STEP_TONE[i] ?? STEP_TONE[0]}`}
+                >
                   {step.number}
                 </span>
               </div>

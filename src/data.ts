@@ -7,6 +7,8 @@ import step2 from "./assets/step-2.png";
 import step3 from "./assets/step-3.png";
 
 export interface Feature {
+  /** Which part of the app this belongs to — drives the card's accent hue. */
+  area: "patterns" | "charts" | "assistant" | "counter";
   title: string;
   description: string;
   image: string;
@@ -23,6 +25,7 @@ export interface Step {
 
 export const features: Feature[] = [
   {
+    area: "patterns",
     title: "Pattern Import",
     description:
       "Bring in any pattern — even a messy PDF — and follow it cleanly on any device.",
@@ -30,6 +33,7 @@ export const features: Feature[] = [
     alt: "Importing a pattern into Skeined",
   },
   {
+    area: "charts",
     title: "Chart Generation",
     description:
       "We turn written patterns into clear, tappable charts you can read at a glance.",
@@ -37,6 +41,7 @@ export const features: Feature[] = [
     alt: "A generated stitch chart",
   },
   {
+    area: "assistant",
     title: "Craft Assistant",
     description:
       "Stuck on a stitch mid-row? Ask and get an answer right there, without losing your place.",
@@ -44,6 +49,7 @@ export const features: Feature[] = [
     alt: "The craft assistant answering a stitch question",
   },
   {
+    area: "counter",
     title: "Offline Row Counter",
     description:
       "Keep your place — and your yarn stash — with a counter that works fully offline.",
@@ -55,24 +61,25 @@ export const features: Feature[] = [
 export const steps: Step[] = [
   {
     number: 1,
-    title: "Download Skeined",
-    description: "Skeined is free on the App Store and Play Store.",
+    title: "Bring your pattern in",
+    description:
+      "A PDF you bought, a photo of a magazine page, or a link to a tutorial. Drop it in as it is — no retyping, no reformatting.",
     image: step1,
-    alt: "Download the app",
+    alt: "Importing a pattern from a PDF",
   },
   {
     number: 2,
-    title: "Import your first pattern",
+    title: "It becomes rows you can follow",
     description:
-      "Bring in a pattern — PDF, photo, or link — and watch it become a clean chart.",
+      "Your pattern is read into row-by-row instructions and a tappable chart, with every abbreviation ready to explain itself.",
     image: step2,
-    alt: "Importing a first pattern",
+    alt: "A pattern turned into row-by-row instructions",
   },
   {
     number: 3,
-    title: "Cast on with confidence",
+    title: "Put it down whenever you like",
     description:
-      "Track every row offline, ask the assistant when you're stuck, and finish more projects.",
+      "Count rows offline, leave yourself notes mid-row, and come back to the exact stitch you left — however long it's been.",
     image: step3,
     alt: "Tracking a project row by row",
   },

@@ -36,7 +36,7 @@ export default function MakerNote() {
             Why Skeined exists.
           </h2>
 
-          <div className="mt-8 rounded-card bg-primary-light p-6 sm:p-9">
+          <div className="mt-8 rounded-card bg-clay-wash p-6 sm:p-9">
             <div className="space-y-5 text-[16px] leading-relaxed text-ink sm:text-[17px]">
               <p>
                 Put your work down for four minutes — the kettle, the door, a
@@ -62,7 +62,7 @@ export default function MakerNote() {
               </p>
             </div>
 
-            <p className="mt-7 text-[15px] font-semibold text-primary">
+            <p className="mt-7 text-[15px] font-semibold text-mulberry">
               Khensani — maker of Skeined
             </p>
           </div>

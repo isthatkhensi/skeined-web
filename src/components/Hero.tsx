@@ -76,15 +76,15 @@ export default function Hero() {
     <section className="p-4">
       <div className="hero-cloud relative flex min-h-[640px] flex-col overflow-hidden rounded-card px-5 pt-7 sm:min-h-[760px] sm:px-10 lg:min-h-[820px] lg:px-16">
         {/* nav */}
-        <nav className="relative z-10 flex w-full items-center justify-between text-white">
-          <Brand className="text-white" />
+        <nav className="relative z-10 flex w-full items-center justify-between text-ink">
+          <Brand className="text-ink" />
 
-          <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-sm font-medium text-white/90 lg:flex">
+          <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-sm font-medium text-ink/80 lg:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+                  className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-ink"
                 >
                   {link.label}
                 </a>
@@ -94,7 +94,7 @@ export default function Hero() {
 
           <a
             href="#waitlist"
-            className="rounded-full bg-white px-5 py-3.5 text-xs font-semibold tracking-wide text-ink transition hover:opacity-90"
+            className="rounded-full bg-clay px-5 py-3.5 text-xs font-semibold tracking-wide text-ink shadow-sm transition hover:opacity-90"
           >
             Join waitlist
           </a>
@@ -103,7 +103,7 @@ export default function Hero() {
         {/* two-column: copy left, phone (with counter under it) right */}
         <div className="grid min-w-0 flex-1 gap-8 pt-8 lg:grid-cols-2 lg:items-end lg:gap-10">
           {/* LEFT — copy */}
-          <div className="min-w-0 self-center pb-8 text-center text-white lg:pb-16 lg:text-left">
+          <div className="min-w-0 self-center pb-8 text-center text-ink lg:pb-16 lg:text-left">
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6 }}
-              className="mx-auto mt-5 max-w-[440px] text-[18px] leading-relaxed lg:mx-0"
+              className="mx-auto mt-5 max-w-[440px] text-[18px] leading-relaxed text-ink/90 lg:mx-0"
             >
               Import patterns from PDFs and YouTube tutorials.
               <br />
@@ -136,7 +136,7 @@ export default function Hero() {
               noValidate
               className="mx-auto mt-7 w-[min(440px,90vw)] scroll-mt-24 lg:mx-0"
             >
-              <div className="flex items-center gap-2 rounded-full border border-white/20 bg-gradient-to-b from-white/10 to-white/25 p-[7px] pl-2 shadow-[inset_0_-4px_100px_20px_rgba(238,238,238,0.08)] backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-white/80 focus-within:ring-offset-2 focus-within:ring-offset-hero">
+              <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/70 p-[7px] pl-2 shadow-sm backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-heroWash">
                 <label htmlFor="email" className="sr-only">
                   Your email address
                 </label>
@@ -154,12 +154,12 @@ export default function Hero() {
                     },
                     onChange: () => setStatus("idle"),
                   })}
-                  className="min-w-0 flex-1 bg-transparent pl-3.5 text-[15px] text-white placeholder:text-white/80 focus:outline-none disabled:opacity-60"
+                  className="min-w-0 flex-1 bg-transparent pl-3.5 text-[15px] text-ink placeholder:text-faint focus:outline-none disabled:opacity-60"
                 />
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-shrink-0 rounded-full bg-white px-5 py-3 text-[13px] font-semibold text-ink transition hover:-translate-y-px hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink disabled:opacity-60 disabled:hover:translate-y-0"
+                  className="flex-shrink-0 rounded-full bg-clay px-5 py-3 text-[13px] font-semibold text-ink shadow-sm transition hover:-translate-y-px hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink disabled:opacity-60 disabled:hover:translate-y-0"
                 >
                   {isSubmitting ? "Joining…" : "Join waitlist"}
                 </button>
@@ -170,10 +170,10 @@ export default function Hero() {
                 role="status"
               >
                 {errors.email && (
-                  <span className="text-white/90">{errors.email.message}</span>
+                  <span className="text-ink/90">{errors.email.message}</span>
                 )}
                 {!errors.email && status === "success" && (
-                  <span className="text-white/90">
+                  <span className="text-ink/90">
                     You're on the list — thank you for waiting with us. We
                     don't have automatic emails wired up yet, so there's
                     nothing in your inbox to watch for just yet — we'll share
@@ -181,7 +181,7 @@ export default function Hero() {
                   </span>
                 )}
                 {!errors.email && status === "error" && (
-                  <span className="text-white/90">
+                  <span className="text-ink/90">
                     That didn't quite make it through — mind trying again in
                     a moment?
                   </span>
