@@ -2,6 +2,11 @@ import { steps } from "../data";
 import FeatureCard from "./FeatureCard";
 import Reveal from "./Reveal";
 
+// Three steps, three tiers — the palette hierarchy shown rather than described:
+// primary clay, secondary sage, tertiary lavender. Every fill carries dark ink,
+// which is the rule that keeps clay looking like clay.
+const STEP_TONE = ["bg-clay text-ink", "bg-sage-tint text-sage-ink", "bg-lavender-tint text-lavender"];
+
 export default function Steps() {
   return (
     <section
@@ -39,7 +44,9 @@ export default function Steps() {
                 {i < steps.length - 1 && (
                   <span className="step-connector absolute left-1/2 top-2 bottom-0 w-px -translate-x-1/2" />
                 )}
-                <span className="relative z-10 grid h-[34px] w-[34px] place-items-center rounded-full bg-clay text-sm font-medium text-ink">
+                <span
+                  className={`relative z-10 grid h-[34px] w-[34px] place-items-center rounded-full text-sm font-medium ${STEP_TONE[i] ?? STEP_TONE[0]}`}
+                >
                   {step.number}
                 </span>
               </div>

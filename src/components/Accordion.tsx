@@ -17,7 +17,7 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
         return (
           <li
             key={i}
-            className="overflow-hidden rounded-2xl border border-black/[0.05] bg-primary-light"
+            className="overflow-hidden rounded-2xl border border-black/[0.05] bg-clay-wash"
           >
             <button
               type="button"

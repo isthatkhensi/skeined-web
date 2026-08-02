@@ -197,9 +197,9 @@ export default function Pricing() {
 
         {/* founding-member highlight — deliberately stands out */}
         <Reveal className="mx-auto mb-10 max-w-3xl">
-          <div className="relative flex flex-col items-center gap-4 overflow-hidden rounded-card bg-primary-light px-7 py-7 text-center text-ink shadow-sm sm:flex-row sm:justify-between sm:text-left">
+          <div className="relative flex flex-col items-center gap-4 overflow-hidden rounded-card border border-gold/30 bg-gold-tint px-7 py-7 text-center text-ink shadow-sm sm:flex-row sm:justify-between sm:text-left">
             <div>
-              <span className="mb-2 inline-block rounded-full bg-clay px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink">
+              <span className="mb-2 inline-block rounded-full bg-gold px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink">
                 Only 50 spots
               </span>
               <p className="text-xl font-bold">Founding Member — Pro for life</p>
