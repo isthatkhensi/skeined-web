@@ -25,7 +25,21 @@ export interface Tier {
   prices: Record<Currency, TierPrices>;
 }
 
-export const ANNUAL_SAVING = 42; // % — same across currencies
+/**
+ * The annual discount, DERIVED per currency rather than asserted.
+ *
+ * This was a hardcoded 42 for every currency. It happens to be right for USD
+ * (41.6%) and GBP (41.5%), but ZAR's annual is R649 against R1,068 of monthly —
+ * a 39% saving, not 42%. A stated discount that's three points better than the
+ * one you actually get is a price claim we can't make, so the number is now
+ * computed from the prices themselves and cannot drift from them again.
+ */
+export function annualSaving(currency: Currency): number {
+  const pro = TIERS.find((t) => t.name === "Pro")!;
+  const { monthly, annual } = pro.prices[currency];
+  if (!monthly) return 0;
+  return Math.round((1 - annual / (monthly * 12)) * 100);
+}
 
 export const TIERS: Tier[] = [
   {

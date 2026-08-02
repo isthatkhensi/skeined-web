@@ -5,7 +5,7 @@ import {
   TIERS,
   CURRENCIES,
   CURRENCY_META,
-  ANNUAL_SAVING,
+  annualSaving,
   FOUNDING_PRICE,
   FOUNDING_FALLBACK,
   detectCurrency,
@@ -142,7 +142,7 @@ function TierCard({
         }`}
       >
         {showAnnual &&
-          `${formatPrice(annual / 12, currency)}/mo · save ${ANNUAL_SAVING}%`}
+          `${formatPrice(annual / 12, currency)}/mo · save ${annualSaving(currency)}%`}
       </p>
 
       <p
@@ -229,7 +229,7 @@ export default function Pricing() {
             onChange={setPeriod}
             options={[
               { value: "monthly", label: "Monthly" },
-              { value: "annual", label: `Annual · save ${ANNUAL_SAVING}%` },
+              { value: "annual", label: `Annual · save ${annualSaving(currency)}%` },
             ]}
           />
           <Segmented<Currency>
