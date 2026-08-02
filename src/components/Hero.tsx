@@ -246,7 +246,11 @@ export default function Hero() {
                 width={1419}
                 height={2276}
               />
-              <div className="absolute inset-x-0 top-1/2 z-10 w-full -translate-y-1/2 px-2 sm:inset-x-auto sm:right-[100px] sm:w-[118%] sm:px-0">
+              {/* Shifted LEFT so the strip mostly hangs beside the phone and only
+                  its right-hand blocks cross the mockup — hovering rather than
+                  sitting on it. Mobile keeps a small nudge only: there's no room
+                  to hang off a 390px column without clipping. */}
+              <div className="absolute inset-x-0 top-1/2 z-10 w-full -translate-y-1/2 -translate-x-6 px-2 sm:inset-x-auto sm:right-[260px] sm:w-[118%] sm:translate-x-0 sm:px-0">
                 <Countdown />
               </div>
             </motion.div>
