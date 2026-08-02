@@ -17,7 +17,7 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
         return (
           <li
             key={i}
-            className={`overflow-hidden rounded-2xl border bg-clay-wash transition-colors ${
+            className={`overflow-hidden rounded-2xl border bg-clay-tint transition-colors ${
               isOpen ? "border-clay" : "border-black/[0.05]"
             }`}
           >

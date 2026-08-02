@@ -31,7 +31,7 @@ export default function MakerNote() {
             Why Skeined exists.
           </h2>
 
-          <div className="mt-8 rounded-card bg-clay-wash p-6 sm:p-9">
+          <div className="mt-8 rounded-card bg-clay-tint p-6 sm:p-9">
             <div className="space-y-5 text-[16px] leading-relaxed text-ink sm:text-[17px]">
               <p>
                 I tried a lot of apps before I built this one. Every single one
