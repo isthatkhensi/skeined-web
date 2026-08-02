@@ -18,7 +18,6 @@ const navLinks = [
   { label: "How it works", href: "#how-it-works" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQs", href: "#faqs" },
-  { label: "Why", href: "#why" },
 ];
 
 // Founding Member isn't purchasable yet. This number is a MANUAL count the
@@ -130,6 +129,15 @@ export default function Hero() {
               Pick up exactly where you left off.
             </motion.p>
 
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.32, duration: 0.6 }}
+              className="mx-auto mt-7 w-[min(440px,90vw)] lg:mx-0"
+            >
+              <Countdown />
+            </motion.div>
+
             <motion.form
               id="waitlist"
               initial={{ opacity: 0, y: 18 }}
@@ -137,7 +145,7 @@ export default function Hero() {
               transition={{ delay: 0.4, duration: 0.6 }}
               onSubmit={handleSubmit(onSubmit)}
               noValidate
-              className="mx-auto mt-7 w-[min(440px,90vw)] scroll-mt-24 lg:mx-0"
+              className="mx-auto mt-4 w-[min(440px,90vw)] scroll-mt-24 lg:mx-0"
             >
               <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/70 p-[7px] pl-2 shadow-sm backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-heroWash">
                 <label htmlFor="email" className="sr-only">
@@ -245,11 +253,8 @@ export default function Hero() {
                 alt="Skeined app preview"
                 className="block h-auto w-full object-contain"
                 width={1419}
-                height={2201}
+                height={2276}
               />
-              <div className="absolute inset-x-0 bottom-5 z-10 w-full px-2 sm:inset-x-auto sm:right-[100px] sm:bottom-8 sm:w-[118%] sm:px-0">
-                <Countdown />
-              </div>
             </motion.div>
           </div>
         </div>
