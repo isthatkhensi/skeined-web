@@ -2,10 +2,16 @@ import { steps } from "../data";
 import FeatureCard from "./FeatureCard";
 import Reveal from "./Reveal";
 
-// Three steps, three tiers — the palette hierarchy shown rather than described:
-// primary clay, secondary sage, tertiary lavender. Every fill carries dark ink,
-// which is the rule that keeps clay looking like clay.
-const STEP_TONE = ["bg-clay text-ink", "bg-sage-tint text-sage-ink", "bg-lavender-tint text-lavender"];
+// Three steps, three tiers: primary clay, secondary sage, tertiary lavender.
+// Each numeral is its family's INK on its family's TINT — the same shape sage
+// and lavender already had. Step 1 was the odd one out (a solid clay disc with
+// black text), which made the row read as two different ideas rather than one
+// progression (founder, 2026-08). clay-ink on clay-tint is 5.02:1.
+const STEP_TONE = [
+  "bg-clay-tint text-clay-ink",
+  "bg-sage-tint text-sage-ink",
+  "bg-lavender-tint text-lavender",
+];
 /** The card behind each step, in the same family as its number. */
 const STEP_TINT = ["bg-clay-tint", "bg-sage-tint", "bg-lavender-tint"];
 

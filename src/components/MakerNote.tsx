@@ -39,34 +39,34 @@ export default function MakerNote() {
               </p>
               <p>
                 So I'd count in one app, keep the pattern PDF open in another,
-                and go hunting for what a stitch meant in a third — and
-                somewhere in all that swapping back and forth I'd lose my place,
-                and the row, and the thread of it. This is meant to be the calm
-                part of my day. Running four apps to do it is not calm.
-              </p>
-              <p>
-                I wanted the pattern inside the counter, so I never have to go
-                find my line again. I wanted to press a stitch I didn't know and
-                have it just tell me, right there. I wanted to stop feeling like
-                a beginner while I was still busy being one.
+                and go hunting for what a stitch meant in a third, and somewhere
+                in all that swapping back and forth I'd lose my place, and the
+                row, and the thread of it. This is meant to be the calm part of
+                my day. Running four apps to do it is not calm. I wanted to stop
+                feeling like a beginner while I was still busy being one.
               </p>
               <p>
                 And then the part nobody seems to build: something that keeps me
                 honest about the things I've promised people. I am a serial
-                gift-giving procrastinator — a deadline I set myself is not,
+                gift-giving procrastinator, and a deadline I set myself is not,
                 historically, a deadline. So Skeined has streaks and goals and
-                gentle nudges, because I needed accountability that doesn't
-                nag. And when a project is finally done, it should be worth
-                showing off.
+                gentle nudges, because I needed accountability that doesn't nag.
+                And when a project is finally done, it should be worth showing
+                off.
               </p>
               <p>
                 I made this as a maker, for makers. That's the whole reason.
               </p>
             </div>
 
-            <p className="mt-7 text-[15px] font-semibold text-mulberry">
-              Khensani — maker of Skeined
-            </p>
+            <div className="mt-8">
+              <p className="text-[17px] font-bold tracking-[-0.01em] text-mulberry">
+                Khensani
+              </p>
+              <p className="mt-0.5 text-[13px] font-medium uppercase tracking-[0.14em] text-faint">
+                Maker of Skeined
+              </p>
+            </div>
           </div>
         </Reveal>
       </div>
