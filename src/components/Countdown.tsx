@@ -35,17 +35,17 @@ export default function Countdown() {
       aria-label="Time remaining until launch"
     >
       {units.map(([label, value], i) => (
-        <div key={label} className="flex flex-1 items-center">
-          <div className="flex flex-1 flex-col items-center rounded-2xl bg-white/60 px-2 py-4 sm:py-5">
-            <span className="text-3xl font-bold tabular-nums text-ink sm:text-4xl">
+        <div key={label} className="flex min-w-0 flex-1 items-center">
+          <div className="flex min-w-0 flex-1 flex-col items-center rounded-2xl bg-white/60 px-1 py-4 sm:px-2 sm:py-5">
+            <span className="text-[clamp(1.1rem,7vw,1.875rem)] font-bold tabular-nums text-ink sm:text-4xl">
               {value}
             </span>
-            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/60 sm:text-[11px]">
+            <span className="mt-1 text-[9px] font-semibold uppercase tracking-[0.1em] text-ink/60 sm:text-[11px] sm:tracking-[0.14em]">
               {label}
             </span>
           </div>
           {i < units.length - 1 && (
-            <span className="text-xl font-light text-ink/30">:</span>
+            <span className="flex-shrink-0 text-xl font-light text-ink/30">:</span>
           )}
         </div>
       ))}

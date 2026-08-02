@@ -46,13 +46,17 @@ function SkeinedLogo({ className = "" }: { className?: string }) {
 /** The Skeined logo, optionally wrapped in a router link. */
 export default function Brand({ className = "", to }: BrandProps) {
   const logo = <SkeinedLogo className="h-6 w-auto" />;
+  // Extend the tappable area beyond the visual mark (which is only ~24px
+  // tall) without changing its size or the surrounding layout.
+  const hitArea =
+    "relative inline-flex items-center before:absolute before:-inset-3 before:content-['']";
 
   return to ? (
-    <Link to={to} className={`inline-flex items-center ${className}`}>
+    <Link to={to} className={`${hitArea} ${className}`}>
       {logo}
     </Link>
   ) : (
-    <a href="#" className={`inline-flex items-center ${className}`}>
+    <a href="#" className={`${hitArea} ${className}`}>
       {logo}
     </a>
   );

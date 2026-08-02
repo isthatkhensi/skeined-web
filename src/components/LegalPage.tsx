@@ -48,6 +48,32 @@ export default function LegalPage({ title, markdown }: LegalPageProps) {
             strong: ({ children }) => (
               <strong className="font-semibold text-ink">{children}</strong>
             ),
+            // Tables (and any other unexpectedly wide block, e.g. a long code
+            // span) scroll within their own box rather than pushing the page
+            // wider — legal copy is the one place free-form content could
+            // introduce something wide.
+            table: ({ children }) => (
+              <div className="w-full overflow-x-auto">
+                <table className="w-full min-w-[480px] border-collapse text-left">
+                  {children}
+                </table>
+              </div>
+            ),
+            th: ({ children }) => (
+              <th className="border-b border-linen px-3 py-2 font-semibold text-ink">
+                {children}
+              </th>
+            ),
+            td: ({ children }) => (
+              <td className="border-b border-linen px-3 py-2 align-top">
+                {children}
+              </td>
+            ),
+            pre: ({ children }) => (
+              <pre className="w-full overflow-x-auto rounded-lg bg-primary-light p-4 text-sm">
+                {children}
+              </pre>
+            ),
           }}
         >
           {markdown}
