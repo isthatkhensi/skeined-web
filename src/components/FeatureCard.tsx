@@ -1,4 +1,23 @@
+/**
+ * Feature areas → palette family. The site inherits the app's hierarchy —
+ * clay primary, sage secondary, lavender/mulberry tertiary, gold/rose accent —
+ * and this is where the secondary and tertiary hues earn their place: the
+ * accent tells you WHICH part of Skeined a card is about. Without it the page
+ * is one colour top to bottom, which is exactly what the founder disliked in
+ * the app (2026-08).
+ */
+const AREA = {
+  patterns: { label: "Patterns", className: "text-clay-ink" }, // primary — the core tool
+  charts: { label: "Charts", className: "text-sage-ink" }, // secondary
+  assistant: { label: "Assistant", className: "text-lavender" }, // tertiary
+  counter: { label: "Counter & stash", className: "text-rose-ink" }, // accent
+} as const;
+
+export type FeatureArea = keyof typeof AREA;
+
 interface FeatureCardProps {
+  /** Omitted by Steps, which is a sequence rather than a set of areas. */
+  area?: FeatureArea;
   title: string;
   description: string;
   image: string;
@@ -9,12 +28,14 @@ interface FeatureCardProps {
 
 /** Shared card used by both the Features grid and the Steps list. */
 export default function FeatureCard({
+  area,
   title,
   description,
   image,
   alt,
   ratio = "1728 / 960",
 }: FeatureCardProps) {
+  const accent = area ? AREA[area] : null;
   return (
     // `min-w-0` is load-bearing, not decoration. As a flex/grid item the card's
     // automatic minimum size is its min-content width, and in WebKit the
@@ -33,6 +54,13 @@ export default function FeatureCard({
         />
       </div>
       <div className="px-7 pb-8 pt-6 sm:px-[30px]">
+        {accent && (
+          <p
+            className={`mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] ${accent.className}`}
+          >
+            {accent.label}
+          </p>
+        )}
         <h3 className="text-xl font-semibold tracking-tight text-ink">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p>
       </div>

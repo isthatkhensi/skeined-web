@@ -20,11 +20,11 @@ export default function Steps() {
             id="steps-heading"
             className="text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-ink"
           >
-            Get started in 3 simple steps.
+            From pattern to first row, in three steps.
           </h2>
           <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-muted">
-            From download to your first cast-on in minutes — no fuss, no steep
-            learning curve.
+            Getting the app is the easy part. This is the bit that actually
+            saves you an evening.
           </p>
         </Reveal>
 
