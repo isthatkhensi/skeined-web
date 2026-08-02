@@ -21,13 +21,16 @@ const navLinks = [
   { label: "Why", href: "#why" },
 ];
 
-// Founding Member isn't purchasable yet, so nobody has claimed a spot — this
-// must read as truthfully zero, never fabricated scarcity.
-// TODO(founder): once Founding Member purchases go live, wire SPOTS_CLAIMED to
-// the real count (a Supabase count query / RPC), remove the hardcoded 0, and
-// re-introduce the progress bar once it can reflect real numbers.
+// Founding Member isn't purchasable yet. This number is a MANUAL count the
+// founder maintains, and it must always be one she can point at — never a
+// scarcity figure we invented. Currently 2: two makers have committed via the
+// waitlist (founder, 2026-08-02). Note they are not paid and hold no reserved
+// spot; when purchases open they go through the same queue as everyone else,
+// so this figure can move down as well as up.
+// TODO(founder): once purchases go live, wire SPOTS_CLAIMED to the real paid
+// count (a Supabase count query / RPC) and delete the hardcoded value.
 const SPOTS_TOTAL = 50;
-const SPOTS_CLAIMED = 0;
+const SPOTS_CLAIMED = 2;
 
 export default function Hero() {
   const founding = FOUNDING_PRICE[detectCurrency()];
