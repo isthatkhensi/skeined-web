@@ -6,6 +6,8 @@ import Reveal from "./Reveal";
 // primary clay, secondary sage, tertiary lavender. Every fill carries dark ink,
 // which is the rule that keeps clay looking like clay.
 const STEP_TONE = ["bg-clay text-ink", "bg-sage-tint text-sage-ink", "bg-lavender-tint text-lavender"];
+/** The card behind each step, in the same family as its number. */
+const STEP_TINT = ["bg-clay-tint", "bg-sage-tint", "bg-lavender-tint"];
 
 export default function Steps() {
   return (
@@ -56,6 +58,7 @@ export default function Steps() {
                 delay={0.05}
               >
                 <FeatureCard
+                  tintClass={STEP_TINT[i] ?? STEP_TINT[0]}
                   title={step.title}
                   description={step.description}
                   image={step.image}

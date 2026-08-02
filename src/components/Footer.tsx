@@ -24,13 +24,13 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="rounded-t-card bg-ink text-white">
+    <footer className="rounded-t-card bg-clay text-ink">
       <div className="mx-auto max-w-content px-5 py-14 sm:px-10">
         <div className="grid gap-12 pb-12 md:grid-cols-3">
           {/* brand + socials */}
           <div className="max-w-sm">
-            <Brand className="text-white" />
-            <p className="mt-4 text-sm leading-relaxed text-white/60">
+            <Brand className="text-mulberry" />
+            <p className="mt-4 text-sm leading-relaxed text-ink/90">
               The calmest way to import patterns, follow charts, and never lose
               your place in a row. Coming soon to iOS and Android.
             </p>
@@ -42,7 +42,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/70 transition hover:border-clay hover:text-white"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 text-ink/90 transition hover:border-ink hover:text-ink"
                   >
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                       <path d={s.path} />
@@ -55,13 +55,13 @@ export default function Footer() {
 
           {/* product links */}
           <nav aria-label="Footer" className="md:justify-self-center">
-            <h3 className="text-sm font-semibold text-white">Product</h3>
-            <ul className="mt-4 flex flex-col gap-3 text-sm text-white/60">
+            <h3 className="text-sm font-semibold text-ink">Product</h3>
+            <ul className="mt-4 flex flex-col gap-3 text-sm text-ink/90">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+                    className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-ink"
                   >
                     {link.label}
                   </a>
@@ -72,15 +72,15 @@ export default function Footer() {
 
           {/* CTA */}
           <div className="md:justify-self-end md:text-right">
-            <h3 className="text-lg font-semibold text-white">
+            <h3 className="text-lg font-semibold text-ink">
               Ready to cast on?
             </h3>
-            <p className="mt-2 max-w-xs text-sm text-white/60">
+            <p className="mt-2 max-w-xs text-sm text-ink/90">
               Join the waitlist and lock in Pro for life as a Founding Member.
             </p>
             <a
               href="/#waitlist"
-              className="mt-5 inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:opacity-90"
+              className="mt-5 inline-flex rounded-full bg-card px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:opacity-90"
             >
               Join waitlist
             </a>
@@ -88,24 +88,24 @@ export default function Footer() {
         </div>
 
         {/* bottom bar: copyright + legal */}
-        <div className="flex flex-col items-center gap-4 border-t border-white/10 pt-8 text-sm text-white/50 sm:flex-row sm:justify-between">
+        <div className="flex flex-col items-center gap-4 border-t border-ink/15 pt-8 text-sm text-ink/90 sm:flex-row sm:justify-between">
           <p>© 2026 Skeined. All rights reserved.</p>
           <nav className="flex items-center gap-6">
             <Link
               to="/privacy"
-              className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+              className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-ink"
             >
               Privacy Policy
             </Link>
             <Link
               to="/terms"
-              className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+              className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-ink"
             >
               Terms of Service
             </Link>
             <Link
               to="/support"
-              className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+              className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-ink"
             >
               Support
             </Link>
