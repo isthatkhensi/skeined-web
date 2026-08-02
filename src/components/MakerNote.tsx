@@ -1,24 +1,19 @@
 import Reveal from "./Reveal";
 
 /**
- * Replaces the old Testimonials marquee.
+ * Replaces the old Testimonials marquee, which carried seven invented crafters
+ * — names, stock photos and "Founding Member" roles — for an unlaunched app
+ * whose 50 founding places are all still open. Fabricated reviews, not
+ * placeholder copy; it came down before the page got promoted.
  *
- * That section carried seven invented crafters — names, photos and "Founding
- * Member" roles — for an app that hasn't launched and whose 50 founding places
- * are all still open. Presented as reviews, invented quotes are a real problem
- * (App Store review guideline 3.1.2 territory, ASA/consumer-law territory, and
- * a bad first impression if a single reader recognises a stock avatar). It came
- * down before the page gets promoted.
+ * The copy below is Khensani's OWN reasons, dictated 2026-08-02 and shaped for
+ * the page — the apps she tried, the tab-switching, the stitch she couldn't
+ * look up without leaving, not feeling like a beginner, the accountability she
+ * wanted without the nagging, the gift-giving procrastination. It is not
+ * invented backstory and shouldn't be rewritten into generic founder copy: the
+ * specifics ARE the persuasion. Edit the wording freely; keep the substance.
  *
- * What replaces it does the same persuasion job honestly: the reason the app
- * exists, plus an explicit admission that there are no reviews yet. Saying "no
- * reviews yet, and we won't write our own" reads as confidence, not weakness.
- *
- * COPY IS FOUNDER-EDITABLE — the note is written to be true of Skeined as it
- * stands, and deliberately makes no biographical claims beyond building it solo
- * from Johannesburg. Khensani should read it in her own voice and change
- * anything that doesn't sound like her. Real quotes replace this section after
- * launch.
+ * Real quotes replace this section after launch.
  */
 export default function MakerNote() {
   return (
@@ -39,26 +34,33 @@ export default function MakerNote() {
           <div className="mt-8 rounded-card bg-clay-wash p-6 sm:p-9">
             <div className="space-y-5 text-[16px] leading-relaxed text-ink sm:text-[17px]">
               <p>
-                Put your work down for four minutes — the kettle, the door, a
-                child — and the row is gone. What follows is counting stitches
-                backwards with a cold cup of tea, and the calm thing you sat
-                down for has quietly turned into admin.
+                I tried a lot of apps before I built this one. Every single one
+                was the same thing: a number that goes up.
               </p>
               <p>
-                Every app I tried treated that as a counting problem. It isn't.
-                It's a <em className="not-italic font-semibold">keeping your place</em>{" "}
-                problem — the pattern, the row, the note you left yourself last
-                week, the yarn already sitting in your basket.
+                So I'd count in one app, keep the pattern PDF open in another,
+                and go hunting for what a stitch meant in a third — and
+                somewhere in all that swapping back and forth I'd lose my place,
+                and the row, and the thread of it. This is meant to be the calm
+                part of my day. Running four apps to do it is not calm.
               </p>
               <p>
-                So Skeined is built around one idea: put it down whenever you
-                like, and pick it up exactly where you were. It opens on your
-                last row, reads your pattern so you're not hunting for your
-                line, and keeps your stash where you can see it.
+                I wanted the pattern inside the counter, so I never have to go
+                find my line again. I wanted to press a stitch I didn't know and
+                have it just tell me, right there. I wanted to stop feeling like
+                a beginner while I was still busy being one.
               </p>
               <p>
-                I'm building it on my own, from Johannesburg, for crafters who
-                want their evenings back rather than one more thing to manage.
+                And then the part nobody seems to build: something that keeps me
+                honest about the things I've promised people. I am a serial
+                gift-giving procrastinator — a deadline I set myself is not,
+                historically, a deadline. So Skeined has streaks and goals and
+                gentle nudges, because I needed accountability that doesn't
+                nag. And when a project is finally done, it should be worth
+                showing off.
+              </p>
+              <p>
+                I made this as a maker, for makers. That's the whole reason.
               </p>
             </div>
 
@@ -66,14 +68,6 @@ export default function MakerNote() {
               Khensani — maker of Skeined
             </p>
           </div>
-
-          <p className="mt-7 text-[15px] leading-relaxed text-muted">
-            <span className="font-semibold text-ink">
-              There are no reviews here yet.
-            </span>{" "}
-            Skeined hasn't launched, so nobody has used it long enough to mean
-            it. When they have, their words go here — not ours.
-          </p>
         </Reveal>
       </div>
     </section>
