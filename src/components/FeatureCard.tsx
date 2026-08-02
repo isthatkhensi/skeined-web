@@ -16,12 +16,19 @@ export default function FeatureCard({
   ratio = "1728 / 960",
 }: FeatureCardProps) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-card bg-primary-light">
-      <div className="px-[22px] pt-[22px]" style={{ aspectRatio: ratio }}>
+    // `min-w-0` is load-bearing, not decoration. As a flex/grid item the card's
+    // automatic minimum size is its min-content width, and in WebKit the
+    // min-content contribution of the image below is its INTRINSIC width
+    // (~3500px) — `w-full` doesn't shrink it. On iOS that blew the card, and the
+    // whole page, to 3605px wide at a 390px viewport, while Chromium rendered it
+    // correctly at 294px. Removing `min-w-0` here or on the parent grid item
+    // brings that back; it is not safe to "tidy away".
+    <article className="flex h-full min-w-0 flex-col overflow-hidden rounded-card bg-primary-light">
+      <div className="min-w-0 px-[22px] pt-[22px]" style={{ aspectRatio: ratio }}>
         <img
           src={image}
           alt={alt}
-          className="h-full w-full rounded-[14px] object-cover object-top"
+          className="h-full w-full max-w-full rounded-[14px] object-cover object-top"
           loading="lazy"
         />
       </div>

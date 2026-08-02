@@ -23,11 +23,16 @@ export default function Steps() {
           </p>
         </Reveal>
 
-        <ol className="flex flex-col">
+        <ol className="flex min-w-0 flex-col">
           {steps.map((step, i) => (
             <li
               key={step.number}
-              className="grid grid-cols-[36px_1fr] gap-5 sm:grid-cols-[44px_1fr] sm:gap-7"
+              // The `1fr` track's automatic minimum is min-content, and the card
+              // in it holds a ~3500px-wide image. WebKit sizes the track to that
+              // intrinsic width unless the track's child is explicitly
+              // `min-w-0` (see the Reveal below) — which is what made the whole
+              // page 3605px wide on iOS at a 390px viewport.
+              className="grid min-w-0 grid-cols-[36px_1fr] gap-5 sm:grid-cols-[44px_1fr] sm:gap-7"
             >
               {/* rail: number + connector line */}
               <div className="relative flex justify-center">
@@ -40,7 +45,7 @@ export default function Steps() {
               </div>
 
               <Reveal
-                className={i < steps.length - 1 ? "mb-[50px]" : ""}
+                className={`min-w-0 ${i < steps.length - 1 ? "mb-[50px]" : ""}`}
                 delay={0.05}
               >
                 <FeatureCard
