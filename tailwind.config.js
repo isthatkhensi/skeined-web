@@ -27,8 +27,8 @@ export default {
         "clay-deep": "#B8795A", // pressed / deep fills
         "clay-ink": "#8F5233", // AA-safe clay ink for text + icons on light surfaces
         "clay-tint": "#F6E5DA", // chips, tiles, soft banners
-        "clay-wash": "#FBEEE5", // the softest clay surface — large section fills
-        heroWash: "#F3DDCC", // the hero gradient's mid tone (ring-offset etc.)
+        "clay-wash": "#FDF7F4", // the softest clay surface — large section fills (founder's tint, 2026-08)
+        heroWash: "#E9C2A5", // the hero gradient's mid tone (ring-offset etc.)
 
         // SECONDARY — sage
         sage: "#7E9466", // ANCHOR

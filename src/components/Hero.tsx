@@ -79,7 +79,7 @@ export default function Hero() {
         <nav className="relative z-10 flex w-full items-center justify-between text-ink">
           <Brand className="text-ink" />
 
-          <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-sm font-medium text-ink/75 lg:flex">
+          <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-sm font-medium text-ink/80 lg:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
@@ -118,7 +118,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6 }}
-              className="mx-auto mt-5 max-w-[440px] text-[18px] leading-relaxed text-ink/85 lg:mx-0"
+              className="mx-auto mt-5 max-w-[440px] text-[18px] leading-relaxed text-ink/90 lg:mx-0"
             >
               Import patterns from PDFs and YouTube tutorials.
               <br />
@@ -170,10 +170,10 @@ export default function Hero() {
                 role="status"
               >
                 {errors.email && (
-                  <span className="text-ink/85">{errors.email.message}</span>
+                  <span className="text-ink/90">{errors.email.message}</span>
                 )}
                 {!errors.email && status === "success" && (
-                  <span className="text-ink/85">
+                  <span className="text-ink/90">
                     You're on the list — thank you for waiting with us. We
                     don't have automatic emails wired up yet, so there's
                     nothing in your inbox to watch for just yet — we'll share
@@ -181,7 +181,7 @@ export default function Hero() {
                   </span>
                 )}
                 {!errors.email && status === "error" && (
-                  <span className="text-ink/85">
+                  <span className="text-ink/90">
                     That didn't quite make it through — mind trying again in
                     a moment?
                   </span>
