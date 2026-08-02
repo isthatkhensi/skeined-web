@@ -29,8 +29,8 @@ const navLinks = [
 // so this figure can move down as well as up.
 // TODO(founder): once purchases go live, wire SPOTS_CLAIMED to the real paid
 // count (a Supabase count query / RPC) and delete the hardcoded value.
-const SPOTS_TOTAL = 50;
-const SPOTS_CLAIMED = 2;
+const SPOTS_TOTAL: number = 50;
+const SPOTS_CLAIMED: number = 2;
 
 export default function Hero() {
   const founding = FOUNDING_PRICE[detectCurrency()];
@@ -217,8 +217,16 @@ export default function Hero() {
                 </div>
               )}
               <p className="mt-2 text-xs font-medium text-ink/70">
+                {/* Leads with makers WAITING, which is true today, rather than
+                    spots claimed, which isn't yet — the two on the list are
+                    committed but unpaid, and go through the same queue as
+                    everyone else when purchases open. Once every spot is gone
+                    the "spots left" half drops away and only the count of
+                    makers remains. */}
                 {SPOTS_CLAIMED > 0
-                  ? `${SPOTS_TOTAL - SPOTS_CLAIMED} of ${SPOTS_TOTAL} spots left`
+                  ? SPOTS_CLAIMED >= SPOTS_TOTAL
+                    ? `${SPOTS_CLAIMED} makers already waiting`
+                    : `${SPOTS_CLAIMED} ${SPOTS_CLAIMED === 1 ? "maker" : "makers"} already waiting · ${SPOTS_TOTAL - SPOTS_CLAIMED} spots left`
                   : `${SPOTS_TOTAL} Founding Member spots — be first to claim one.`}
               </p>
             </motion.div>
