@@ -35,7 +35,10 @@ export default function PageShell({
           <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-sm font-medium text-muted lg:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="transition hover:text-ink">
+                <a
+                  href={link.href}
+                  className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-ink"
+                >
                   {link.label}
                 </a>
               </li>
@@ -44,7 +47,7 @@ export default function PageShell({
 
           <a
             href="/#waitlist"
-            className="rounded-full bg-ink px-5 py-2.5 text-xs font-semibold tracking-wide text-white transition hover:opacity-90"
+            className="rounded-full bg-ink px-5 py-3.5 text-xs font-semibold tracking-wide text-white transition hover:opacity-90"
           >
             Join waitlist
           </a>
