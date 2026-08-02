@@ -6,7 +6,7 @@ import Reveal from "./Reveal";
  * whose 50 founding places are all still open. Fabricated reviews, not
  * placeholder copy; it came down before the page got promoted.
  *
- * The copy below is Khensani's OWN reasons, dictated 2026-08-02 and shaped for
+ * The copy below is the founder's OWN reasons, dictated 2026-08-02 and shaped for
  * the page — the apps she tried, the tab-switching, the stitch she couldn't
  * look up without leaving, not feeling like a beginner, the accountability she
  * wanted without the nagging, the gift-giving procrastination. It is not
@@ -61,7 +61,7 @@ export default function MakerNote() {
 
             <div className="mt-8">
               <p className="text-[17px] font-bold tracking-[-0.01em] text-mulberry">
-                Khensani
+                Khensi
               </p>
               <p className="mt-0.5 text-[13px] font-medium uppercase tracking-[0.14em] text-faint">
                 Maker of Skeined
