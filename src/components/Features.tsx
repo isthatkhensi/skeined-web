@@ -25,7 +25,10 @@ export default function Features() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {features.map((feature, i) => (
-            <Reveal key={feature.title} delay={(i % 2) * 0.1}>
+            // `min-w-0`: the same WebKit grid-track trap Steps hit — the card's
+            // image has a ~3500px intrinsic width, and a track whose child has
+            // an `auto` minimum sizes itself to that.
+            <Reveal key={feature.title} className="min-w-0" delay={(i % 2) * 0.1}>
               <FeatureCard {...feature} />
             </Reveal>
           ))}

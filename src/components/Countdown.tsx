@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-// Launch target — last day of July 2026, end of day (local time).
-const TARGET = new Date("2026-07-31T23:59:59").getTime();
+// Launch target — last day of August 2026, end of day (local time).
+const TARGET = new Date("2026-08-31T23:59:59").getTime();
 
 function getRemaining() {
   const diff = Math.max(0, TARGET - Date.now());
