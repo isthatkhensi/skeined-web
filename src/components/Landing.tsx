@@ -3,7 +3,7 @@ import Features from "./Features";
 import Steps from "./Steps";
 import Pricing from "./Pricing";
 import Faq from "./Faq";
-import Testimonials from "./Testimonials";
+import MakerNote from "./MakerNote";
 import Footer from "./Footer";
 
 export default function Landing() {
@@ -15,7 +15,7 @@ export default function Landing() {
         <Steps />
         <Pricing />
         <Faq />
-        <Testimonials />
+        <MakerNote />
       </main>
       <Footer />
     </>
