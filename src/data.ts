@@ -7,8 +7,6 @@ import step2 from "./assets/step-2.png";
 import step3 from "./assets/step-3.png";
 
 export interface Feature {
-  /** Which part of the app this belongs to — drives the card's accent hue. */
-  area: "patterns" | "charts" | "assistant" | "counter";
   title: string;
   description: string;
   image: string;
@@ -25,7 +23,6 @@ export interface Step {
 
 export const features: Feature[] = [
   {
-    area: "patterns",
     title: "Pattern Import",
     description:
       "Bring in any pattern — even a messy PDF — and follow it cleanly on any device.",
@@ -33,7 +30,6 @@ export const features: Feature[] = [
     alt: "Importing a pattern into Skeined",
   },
   {
-    area: "charts",
     title: "Chart Generation",
     description:
       "We turn written patterns into clear, tappable charts you can read at a glance.",
@@ -41,7 +37,6 @@ export const features: Feature[] = [
     alt: "A generated stitch chart",
   },
   {
-    area: "assistant",
     title: "Craft Assistant",
     description:
       "Stuck on a stitch mid-row? Ask and get an answer right there, without losing your place.",
@@ -49,7 +44,6 @@ export const features: Feature[] = [
     alt: "The craft assistant answering a stitch question",
   },
   {
-    area: "counter",
     title: "Offline Row Counter",
     description:
       "Keep your place — and your yarn stash — with a counter that works fully offline.",
