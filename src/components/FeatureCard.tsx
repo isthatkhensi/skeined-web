@@ -1,16 +1,21 @@
 /**
- * Feature areas → palette family. The site inherits the app's hierarchy —
- * clay primary, sage secondary, lavender/mulberry tertiary, gold/rose accent —
- * and this is where the secondary and tertiary hues earn their place: the
- * accent tells you WHICH part of Skeined a card is about. Without it the page
- * is one colour top to bottom, which is exactly what the founder disliked in
- * the app (2026-08).
+ * Feature areas → palette family, applied to the EYEBROW only.
+ *
+ * The cards themselves all sit on the primary tint (founder, 2026-08): four
+ * different card backgrounds in a row made the grid the loudest thing on the
+ * page. The accent survives in the label, which is where it does its actual
+ * job — telling you which part of Skeined a card is about — while the Steps
+ * section keeps its coloured cards, so secondary and tertiary still appear on
+ * the page without competing.
+ *
+ * Every ink below clears AA on the clay tint: clay 5.01:1 · sage 5.80:1 ·
+ * lavender 4.96:1 · rose 5.66:1.
  */
 const AREA = {
-  patterns: { label: "Patterns", className: "text-clay-ink", tint: "bg-clay-tint" }, // primary — the core tool
-  charts: { label: "Charts", className: "text-sage-ink", tint: "bg-sage-tint" }, // secondary
-  assistant: { label: "Assistant", className: "text-lavender", tint: "bg-lavender-tint" }, // tertiary
-  counter: { label: "Counter & stash", className: "text-rose-ink", tint: "bg-rose-tint" }, // accent
+  patterns: { label: "Patterns", className: "text-clay-ink" }, // primary — the core tool
+  charts: { label: "Charts", className: "text-sage-ink" }, // secondary
+  assistant: { label: "Assistant", className: "text-lavender" }, // tertiary
+  counter: { label: "Counter & stash", className: "text-rose-ink" }, // accent
 } as const;
 
 export type FeatureArea = keyof typeof AREA;
@@ -49,7 +54,7 @@ export default function FeatureCard({
     // brings that back; it is not safe to "tidy away".
     <article
       className={`flex h-full min-w-0 flex-col overflow-hidden rounded-card ${
-        tintClass ?? accent?.tint ?? "bg-clay-tint"
+        tintClass ?? "bg-clay-tint"
       }`}
     >
       <div className="min-w-0 px-[22px] pt-[22px]" style={{ aspectRatio: ratio }}>
