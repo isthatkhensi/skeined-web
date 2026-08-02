@@ -40,9 +40,9 @@ export default function MakerNote() {
               <p>
                 So I'd count in one app, keep the pattern PDF open in another,
                 and go hunting for what a stitch meant in a third, and somewhere
-                in all that swapping back and forth I'd lose my place, and the
-                row, and the thread of it. This is meant to be the calm part of
-                my day. Running four apps to do it is not calm. I wanted to stop
+                in all that swapping back and forth I'd lose my place, and worst
+                of all my crochet hook. This is meant to be the calm part of my
+                day. Running four apps to do it is not calm. I wanted to stop
                 feeling like a beginner while I was still busy being one.
               </p>
               <p>
