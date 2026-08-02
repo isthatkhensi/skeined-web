@@ -26,7 +26,7 @@ export default function MakerNote() {
         <Reveal className="mx-auto max-w-[680px]">
           <h2
             id="why-heading"
-            className="text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-ink"
+            className="text-center text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-ink"
           >
             Why Skeined exists.
           </h2>
