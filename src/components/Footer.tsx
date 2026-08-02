@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="grid gap-12 pb-12 md:grid-cols-3">
           {/* brand + socials */}
           <div className="max-w-sm">
-            <Brand className="text-mulberry" />
+            <Brand className="text-ink" />
             <p className="mt-4 text-sm leading-relaxed text-ink/90">
               The calmest way to import patterns, follow charts, and never lose
               your place in a row. Coming soon to iOS and Android.
