@@ -1,4 +1,6 @@
 interface FeatureCardProps {
+  /** Steps passes its own family tint, matching that step's number circle. */
+  tintClass?: string;
   title: string;
   description: string;
   image: string;
@@ -9,6 +11,7 @@ interface FeatureCardProps {
 
 /** Shared card used by both the Features grid and the Steps list. */
 export default function FeatureCard({
+  tintClass,
   title,
   description,
   image,
@@ -23,7 +26,11 @@ export default function FeatureCard({
     // whole page, to 3605px wide at a 390px viewport, while Chromium rendered it
     // correctly at 294px. Removing `min-w-0` here or on the parent grid item
     // brings that back; it is not safe to "tidy away".
-    <article className="flex h-full min-w-0 flex-col overflow-hidden rounded-card bg-primary-light">
+    <article
+      className={`flex h-full min-w-0 flex-col overflow-hidden rounded-card ${
+        tintClass ?? "bg-clay-tint"
+      }`}
+    >
       <div className="min-w-0 px-[22px] pt-[22px]" style={{ aspectRatio: ratio }}>
         <img
           src={image}

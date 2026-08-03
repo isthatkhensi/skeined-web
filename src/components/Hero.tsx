@@ -18,16 +18,18 @@ const navLinks = [
   { label: "How it works", href: "#how-it-works" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQs", href: "#faqs" },
-  { label: "Why", href: "#why" },
 ];
 
-// Founding Member isn't purchasable yet, so nobody has claimed a spot — this
-// must read as truthfully zero, never fabricated scarcity.
-// TODO(founder): once Founding Member purchases go live, wire SPOTS_CLAIMED to
-// the real count (a Supabase count query / RPC), remove the hardcoded 0, and
-// re-introduce the progress bar once it can reflect real numbers.
-const SPOTS_TOTAL = 50;
-const SPOTS_CLAIMED = 0;
+// Founding Member isn't purchasable yet. This number is a MANUAL count the
+// founder maintains, and it must always be one she can point at — never a
+// scarcity figure we invented. Currently 2: two makers have committed via the
+// waitlist (founder, 2026-08-02). Note they are not paid and hold no reserved
+// spot; when purchases open they go through the same queue as everyone else,
+// so this figure can move down as well as up.
+// TODO(founder): once purchases go live, wire SPOTS_CLAIMED to the real paid
+// count (a Supabase count query / RPC) and delete the hardcoded value.
+const SPOTS_TOTAL: number = 50;
+const SPOTS_CLAIMED: number = 2;
 
 export default function Hero() {
   const founding = FOUNDING_PRICE[detectCurrency()];
@@ -76,15 +78,15 @@ export default function Hero() {
     <section className="p-4">
       <div className="hero-cloud relative flex min-h-[640px] flex-col overflow-hidden rounded-card px-5 pt-7 sm:min-h-[760px] sm:px-10 lg:min-h-[820px] lg:px-16">
         {/* nav */}
-        <nav className="relative z-10 flex w-full items-center justify-between text-white">
-          <Brand className="text-white" />
+        <nav className="relative z-10 flex w-full items-center justify-between text-ink">
+          <Brand className="text-ink" />
 
-          <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-sm font-medium text-white/90 lg:flex">
+          <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-sm font-medium text-ink/80 lg:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-white"
+                  className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-ink"
                 >
                   {link.label}
                 </a>
@@ -94,7 +96,7 @@ export default function Hero() {
 
           <a
             href="#waitlist"
-            className="rounded-full bg-white px-5 py-3.5 text-xs font-semibold tracking-wide text-ink transition hover:opacity-90"
+            className="rounded-full bg-clay px-5 py-3.5 text-xs font-semibold tracking-wide text-ink shadow-sm transition hover:opacity-90"
           >
             Join waitlist
           </a>
@@ -103,7 +105,7 @@ export default function Hero() {
         {/* two-column: copy left, phone (with counter under it) right */}
         <div className="grid min-w-0 flex-1 gap-8 pt-8 lg:grid-cols-2 lg:items-end lg:gap-10">
           {/* LEFT — copy */}
-          <div className="min-w-0 self-center pb-8 text-center text-white lg:pb-16 lg:text-left">
+          <div className="min-w-0 self-center pb-8 text-center text-ink lg:pb-16 lg:text-left">
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -118,7 +120,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6 }}
-              className="mx-auto mt-5 max-w-[440px] text-[18px] leading-relaxed lg:mx-0"
+              className="mx-auto mt-5 max-w-[440px] text-[18px] leading-relaxed text-ink/90 lg:mx-0"
             >
               Import patterns from PDFs and YouTube tutorials.
               <br />
@@ -136,7 +138,7 @@ export default function Hero() {
               noValidate
               className="mx-auto mt-7 w-[min(440px,90vw)] scroll-mt-24 lg:mx-0"
             >
-              <div className="flex items-center gap-2 rounded-full border border-white/20 bg-gradient-to-b from-white/10 to-white/25 p-[7px] pl-2 shadow-[inset_0_-4px_100px_20px_rgba(238,238,238,0.08)] backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-white/80 focus-within:ring-offset-2 focus-within:ring-offset-hero">
+              <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/70 p-[7px] pl-2 shadow-sm backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-heroWash">
                 <label htmlFor="email" className="sr-only">
                   Your email address
                 </label>
@@ -154,12 +156,12 @@ export default function Hero() {
                     },
                     onChange: () => setStatus("idle"),
                   })}
-                  className="min-w-0 flex-1 bg-transparent pl-3.5 text-[15px] text-white placeholder:text-white/80 focus:outline-none disabled:opacity-60"
+                  className="min-w-0 flex-1 bg-transparent pl-3.5 text-[15px] text-ink placeholder:text-faint focus:outline-none disabled:opacity-60"
                 />
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-shrink-0 rounded-full bg-white px-5 py-3 text-[13px] font-semibold text-ink transition hover:-translate-y-px hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink disabled:opacity-60 disabled:hover:translate-y-0"
+                  className="flex-shrink-0 rounded-full bg-clay px-5 py-3 text-[13px] font-semibold text-ink shadow-sm transition hover:-translate-y-px hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink disabled:opacity-60 disabled:hover:translate-y-0"
                 >
                   {isSubmitting ? "Joining…" : "Join waitlist"}
                 </button>
@@ -170,10 +172,10 @@ export default function Hero() {
                 role="status"
               >
                 {errors.email && (
-                  <span className="text-white/90">{errors.email.message}</span>
+                  <span className="text-ink/90">{errors.email.message}</span>
                 )}
                 {!errors.email && status === "success" && (
-                  <span className="text-white/90">
+                  <span className="text-ink/90">
                     You're on the list — thank you for waiting with us. We
                     don't have automatic emails wired up yet, so there's
                     nothing in your inbox to watch for just yet — we'll share
@@ -181,7 +183,7 @@ export default function Hero() {
                   </span>
                 )}
                 {!errors.email && status === "error" && (
-                  <span className="text-white/90">
+                  <span className="text-ink/90">
                     That didn't quite make it through — mind trying again in
                     a moment?
                   </span>
@@ -214,8 +216,16 @@ export default function Hero() {
                 </div>
               )}
               <p className="mt-2 text-xs font-medium text-ink/70">
+                {/* Leads with makers WAITING, which is true today, rather than
+                    spots claimed, which isn't yet — the two on the list are
+                    committed but unpaid, and go through the same queue as
+                    everyone else when purchases open. Once every spot is gone
+                    the "spots left" half drops away and only the count of
+                    makers remains. */}
                 {SPOTS_CLAIMED > 0
-                  ? `${SPOTS_TOTAL - SPOTS_CLAIMED} of ${SPOTS_TOTAL} spots left`
+                  ? SPOTS_CLAIMED >= SPOTS_TOTAL
+                    ? `${SPOTS_CLAIMED} makers already waiting`
+                    : `${SPOTS_CLAIMED} ${SPOTS_CLAIMED === 1 ? "maker" : "makers"} already waiting · ${SPOTS_TOTAL - SPOTS_CLAIMED} spots left`
                   : `${SPOTS_TOTAL} Founding Member spots — be first to claim one.`}
               </p>
             </motion.div>
@@ -234,9 +244,13 @@ export default function Hero() {
                 alt="Skeined app preview"
                 className="block h-auto w-full object-contain"
                 width={1419}
-                height={2201}
+                height={2276}
               />
-              <div className="absolute inset-x-0 bottom-5 z-10 w-full px-2 sm:inset-x-auto sm:right-[100px] sm:bottom-8 sm:w-[118%] sm:px-0">
+              {/* Shifted LEFT so the strip mostly hangs beside the phone and only
+                  its right-hand blocks cross the mockup — hovering rather than
+                  sitting on it. Mobile keeps a small nudge only: there's no room
+                  to hang off a 390px column without clipping. */}
+              <div className="absolute inset-x-0 top-1/2 z-10 w-full -translate-y-1/2 -translate-x-6 px-2 sm:inset-x-auto sm:right-[260px] sm:w-[118%] sm:translate-x-0 sm:px-0">
                 <Countdown />
               </div>
             </motion.div>

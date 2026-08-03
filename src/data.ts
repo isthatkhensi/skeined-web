@@ -55,24 +55,25 @@ export const features: Feature[] = [
 export const steps: Step[] = [
   {
     number: 1,
-    title: "Download Skeined",
-    description: "Skeined is free on the App Store and Play Store.",
+    title: "Bring your pattern in",
+    description:
+      "A PDF you bought, a photo of a magazine page, or a link to a tutorial. Drop it in as it is — no retyping, no reformatting.",
     image: step1,
-    alt: "Download the app",
+    alt: "Importing a pattern from a PDF",
   },
   {
     number: 2,
-    title: "Import your first pattern",
+    title: "It becomes rows you can follow",
     description:
-      "Bring in a pattern — PDF, photo, or link — and watch it become a clean chart.",
+      "Your pattern is read into row-by-row instructions and a tappable chart, with every abbreviation ready to explain itself.",
     image: step2,
-    alt: "Importing a first pattern",
+    alt: "A pattern turned into row-by-row instructions",
   },
   {
     number: 3,
-    title: "Cast on with confidence",
+    title: "Put it down whenever you like",
     description:
-      "Track every row offline, ask the assistant when you're stuck, and finish more projects.",
+      "Count rows offline, leave yourself notes mid-row, and come back to the exact stitch you left — however long it's been.",
     image: step3,
     alt: "Tracking a project row by row",
   },

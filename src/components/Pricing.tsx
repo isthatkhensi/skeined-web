@@ -5,7 +5,7 @@ import {
   TIERS,
   CURRENCIES,
   CURRENCY_META,
-  ANNUAL_SAVING,
+  annualSaving,
   FOUNDING_PRICE,
   FOUNDING_FALLBACK,
   detectCurrency,
@@ -25,10 +25,15 @@ function Check({ featured }: { featured?: boolean }) {
       aria-hidden="true"
       className="mt-0.5 flex-shrink-0"
     >
-      <circle cx="12" cy="12" r="12" fill={featured ? "#ffffff" : "#8F5233"} />
+      {/* The un-featured tiers (Free) used to fill this with #8F5233, the deep
+          clay INK — a dark brown dot repeated down the list. The ink exists for
+          small text on light surfaces, not for fills. The fill is the PRIMARY
+          anchor (#E0A886) with dark ink on top, exactly like every clay fill in
+          the app; featured tiers already sit on clay, so they invert to white. */}
+      <circle cx="12" cy="12" r="12" fill={featured ? "#ffffff" : "#E0A886"} />
       <path
         d="m7.5 12.3 3 3 6-6.6"
-        stroke={featured ? "#8F5233" : "#ffffff"}
+        stroke={featured ? "#8F5233" : "#3A322E"}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -137,7 +142,7 @@ function TierCard({
         }`}
       >
         {showAnnual &&
-          `${formatPrice(annual / 12, currency)}/mo · save ${ANNUAL_SAVING}%`}
+          `${formatPrice(annual / 12, currency)}/mo · save ${annualSaving(currency)}%`}
       </p>
 
       <p
@@ -197,7 +202,7 @@ export default function Pricing() {
 
         {/* founding-member highlight — deliberately stands out */}
         <Reveal className="mx-auto mb-10 max-w-3xl">
-          <div className="relative flex flex-col items-center gap-4 overflow-hidden rounded-card bg-primary-light px-7 py-7 text-center text-ink shadow-sm sm:flex-row sm:justify-between sm:text-left">
+          <div className="relative flex flex-col items-center gap-4 overflow-hidden rounded-card border border-clay/40 bg-clay-tint px-7 py-7 text-center text-ink shadow-sm sm:flex-row sm:justify-between sm:text-left">
             <div>
               <span className="mb-2 inline-block rounded-full bg-clay px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink">
                 Only 50 spots
@@ -224,7 +229,7 @@ export default function Pricing() {
             onChange={setPeriod}
             options={[
               { value: "monthly", label: "Monthly" },
-              { value: "annual", label: `Annual · save ${ANNUAL_SAVING}%` },
+              { value: "annual", label: `Annual · save ${annualSaving(currency)}%` },
             ]}
           />
           <Segmented<Currency>

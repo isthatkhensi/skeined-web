@@ -2,6 +2,19 @@ import { steps } from "../data";
 import FeatureCard from "./FeatureCard";
 import Reveal from "./Reveal";
 
+// Three steps, three tiers: primary clay, secondary sage, tertiary lavender.
+// Each numeral is its family's INK on its family's TINT — the same shape sage
+// and lavender already had. Step 1 was the odd one out (a solid clay disc with
+// black text), which made the row read as two different ideas rather than one
+// progression (founder, 2026-08). clay-ink on clay-tint is 5.02:1.
+const STEP_TONE = [
+  "bg-clay-tint text-clay-ink",
+  "bg-sage-tint text-sage-ink",
+  "bg-lavender-tint text-lavender",
+];
+/** The card behind each step, in the same family as its number. */
+const STEP_TINT = ["bg-clay-tint", "bg-sage-tint", "bg-lavender-tint"];
+
 export default function Steps() {
   return (
     <section
@@ -15,11 +28,11 @@ export default function Steps() {
             id="steps-heading"
             className="text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-ink"
           >
-            Get started in 3 simple steps.
+            From pattern to first row, in three steps.
           </h2>
           <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-muted">
-            From download to your first cast-on in minutes — no fuss, no steep
-            learning curve.
+            Getting the app is the easy part. This is the bit that actually
+            saves you an evening.
           </p>
         </Reveal>
 
@@ -39,7 +52,9 @@ export default function Steps() {
                 {i < steps.length - 1 && (
                   <span className="step-connector absolute left-1/2 top-2 bottom-0 w-px -translate-x-1/2" />
                 )}
-                <span className="relative z-10 grid h-[34px] w-[34px] place-items-center rounded-full bg-clay text-sm font-medium text-ink">
+                <span
+                  className={`relative z-10 grid h-[34px] w-[34px] place-items-center rounded-full text-sm font-medium ${STEP_TONE[i] ?? STEP_TONE[0]}`}
+                >
                   {step.number}
                 </span>
               </div>
@@ -49,6 +64,7 @@ export default function Steps() {
                 delay={0.05}
               >
                 <FeatureCard
+                  tintClass={STEP_TINT[i] ?? STEP_TINT[0]}
                   title={step.title}
                   description={step.description}
                   image={step.image}
