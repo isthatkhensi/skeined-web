@@ -30,8 +30,8 @@ export default function Footer() {
           <div className="max-w-sm">
             <Brand className="text-ink" />
             <p className="mt-4 text-sm leading-relaxed text-ink/90">
-              The calmest way to import patterns, follow charts, and never lose
-              your place in a row. Coming soon to iOS and Android.
+              The calmest way to import patterns, keep your yarn in order, and
+              never lose your place in a row. Coming soon to iOS and Android.
             </p>
             <ul className="mt-6 flex items-center gap-3">
               {socials.map((s) => (

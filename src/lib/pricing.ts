@@ -60,11 +60,14 @@ export const TIERS: Tier[] = [
   },
   {
     name: "Pro",
-    blurb: "The full toolkit — imports, charts, and the craft assistant.",
+    // Chart generation is held back for v2 (FEATURES.chartView is false in the
+    // app), so it cannot appear on a paid tier's feature list. Replaced with
+    // unlimited yarn scanning, which does ship.
+    blurb: "The full toolkit: imports, yarn scanning, and the craft assistant.",
     features: [
-      "Unlimited pattern imports — PDF, paste, or YouTube link",
-      "Auto-generated stitch charts",
-      "Unlimited projects & yarn scanning",
+      "Unlimited pattern imports from PDF, paste, or a video link",
+      "Unlimited yarn label scans straight into your stash",
+      "Unlimited projects and collections",
       "Craft assistant for Q&A and sizing help",
       "All-device sync",
     ],

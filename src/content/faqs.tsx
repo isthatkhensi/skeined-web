@@ -6,7 +6,7 @@ import { ANDROID_AVAILABLE } from "../lib/links";
 export const supportFaqs: AccordionItem[] = [
   {
     q: "What makes this different from a basic row counter app?",
-    a: "A row counter is table stakes — we have one, and it's good. The real difference is what sits around it: you can import an existing pattern, we generate a chart you can actually follow, and there's a craft assistant on hand when you hit a stitch or instruction you don't know. The counter keeps your place; the rest keeps you moving.",
+    a: "A row counter is table stakes, and ours is good. The real difference is what sits around it: you can import an existing pattern and follow it row by row, scan a ball band straight into your stash, and ask the craft assistant when you hit a stitch or instruction you don't know. The counter keeps your place; the rest keeps you moving.",
   },
   {
     q: "Does it work without an internet connection?",
@@ -14,7 +14,7 @@ export const supportFaqs: AccordionItem[] = [
   },
   {
     q: "What happens to my patterns and stash if I cancel Pro?",
-    a: "Nothing is deleted. Your patterns and stash stay exactly where they are. The Pro-only features — unlimited imports, chart rendering, the assistant — simply lock again, the same way any freemium app works. Nothing is taken away from you.",
+    a: "Nothing is deleted. Your patterns and stash stay exactly where they are. The Pro-only features (unlimited imports, unlimited scans, the craft assistant) simply lock again, the same way any freemium app works. Nothing is taken away from you.",
   },
   {
     q: "Is the Founding Member deal really lifetime — will I ever be charged again?",
