@@ -34,6 +34,19 @@ export const features: Feature[] = [
   {
     // Replaced Chart Generation, which is held back for v2 (FEATURES.chartView
     // is false in the app). Nothing on this site may promise it until it ships.
+    //
+    // TODO (founder, 12 Aug 2026 — shipped as-is deliberately, revisit after
+    // launch): feature-yarn-scan.webp shows a real Red Heart Super Saver ball
+    // band, logo and all. Third-party branding in marketing art is a trademark
+    // risk we do not need to carry, and it is the only image on the site we
+    // could not defend if asked.
+    //
+    // The replacement is already decided: render the BACK of a ball band
+    // instead. The spec block — weight symbol, needle and hook sizes, gauge
+    // square, care icons — is the knitter's own language, reads instantly, and
+    // carries no logo. In the results card, drop the brand line entirely rather
+    // than inventing one, and keep only Fibre content, Weight category and
+    // Yardage, which is what the scanner genuinely reads off the label.
     title: "Yarn Scanner",
     description:
       "Point your camera at a ball band. Skeined reads the brand, weight and fibre straight into your stash.",
