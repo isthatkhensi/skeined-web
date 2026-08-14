@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import PageViews from "./components/PageViews";
 import ScrollToTop from "./components/ScrollToTop";
 import Landing from "./components/Landing";
 import Support from "./pages/Support";
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <PageViews />
       <Routes>
         {/* Homepage */}
         <Route path="/" element={<Landing />} />

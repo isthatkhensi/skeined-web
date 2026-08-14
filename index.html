@@ -44,6 +44,28 @@
     />
     <meta name="twitter:image" content="https://skeined.com/og-image.png" />
 
+    <!-- Google Analytics 4.
+         Guarded by hostname on purpose: `develop` deploys to
+         staging.skeined.com, and without this every test click would land in
+         the same property as real traffic and quietly skew it. Nothing loads
+         at all off the live domain, so localhost stays clean too. -->
+    <script>
+      (function () {
+        var live = ["skeined.com", "www.skeined.com"];
+        if (live.indexOf(location.hostname) === -1) return;
+        var id = "G-0XW5FENDFB";
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag("js", new Date());
+        gtag("config", id);
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
