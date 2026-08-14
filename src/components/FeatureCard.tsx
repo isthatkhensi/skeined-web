@@ -16,7 +16,11 @@ export default function FeatureCard({
   description,
   image,
   alt,
-  ratio = "1728 / 960",
+  // 20% shorter than the original 1728/960 (960 → 768), per the founder's note
+  // that the art was crowding both the top of the card and the copy below it.
+  // Shrinking the frame rather than padding it in keeps the images full-bleed
+  // to the card's inner width, so nothing has to be re-exported.
+  ratio = "1728 / 768",
 }: FeatureCardProps) {
   return (
     // `min-w-0` is load-bearing, not decoration. As a flex/grid item the card's
@@ -31,15 +35,26 @@ export default function FeatureCard({
         tintClass ?? "bg-clay-tint"
       }`}
     >
-      <div className="min-w-0 px-[22px] pt-[22px]" style={{ aspectRatio: ratio }}>
+      <div className="min-w-0 px-[22px] pt-[28px]" style={{ aspectRatio: ratio }}>
+        {/*
+          object-bottom, not object-top. The art in this set is not a consistent
+          shape — the Lock Screen render is 1864x1049 while the rest are
+          1536x1024 — so with object-cover the crop has to be anchored
+          somewhere, and anchoring to the top left the Lock Screen card sitting
+          visibly higher in its frame than the phones in the others. These
+          images all have their subject at the BOTTOM of the canvas (phones
+          cropped at the lower edge, the widget resting low), so anchoring there
+          lines the subjects up across all four cards regardless of shape.
+        */}
         <img
           src={image}
           alt={alt}
-          className="h-full w-full max-w-full rounded-[14px] object-cover object-top"
+          className="h-full w-full max-w-full rounded-[14px] object-cover object-bottom"
           loading="lazy"
         />
       </div>
-      <div className="px-7 pb-8 pt-6 sm:px-[30px]">
+      {/* pt-7 opens the gap under the art, pb-6 lifts the copy off the floor. */}
+      <div className="px-7 pb-6 pt-7 sm:px-[30px]">
         <h3 className="text-xl font-semibold tracking-tight text-ink">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p>
       </div>

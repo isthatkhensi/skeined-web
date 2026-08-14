@@ -7,7 +7,7 @@
 
 export const LEGAL_READY = true;
 
-export const privacyMarkdown = `**Last updated:** 30 July 2026
+export const privacyMarkdown = `**Last updated:** 14 August 2026
 
 Skeined ("we," "us") is a knitting and crochet companion app, made by MalHQ, based in Johannesburg, South Africa. This policy explains what we collect, why, and what your rights are. Questions: **privacy@skeined.com**.
 
@@ -36,8 +36,9 @@ We also learn from how imported patterns parse. When a pattern's structure trips
 - **Apple App Store / Google Play / RevenueCat** — process purchases and report back your subscription status. They handle your payment details under their own privacy policies; we never receive them.
 - **Expo** — delivers push notifications you've opted into, and over-the-air app updates.
 - **Sentry** — receives crash diagnostics (device/OS/app version and error traces) when the app crashes, so we can fix it. Only active in released builds, never in advertising.
+- **Google Analytics** — on the skeined.com **website only**, not in the app. It tells us how many people visited and which pages they read, using cookies set by Google. We use it to understand whether the site explains Skeined well, and for nothing else. You can opt out for every site you visit with [Google's browser add-on](https://tools.google.com/dlpage/gaoptout), or by blocking cookies in your browser — the site works exactly the same either way.
 
-**We do not use advertising networks. We do not sell your data, ever, to anyone.** We don't share your patterns, photos, or projects with other Skeined users unless a future feature explicitly asks you to publish or share something, and you choose to.
+**We do not use advertising networks. We do not sell your data, ever, to anyone.** The website's analytics cookies are for our own understanding of the site; they are not used to build a profile of you or to follow you elsewhere. We don't share your patterns, photos, or projects with other Skeined users unless a future feature explicitly asks you to publish or share something, and you choose to.
 
 ## How long we keep it
 
