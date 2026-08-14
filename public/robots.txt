@@ -1,0 +1,5 @@
+# Skeined — everything is public and indexable.
+User-agent: *
+Allow: /
+
+Sitemap: https://skeined.com/sitemap.xml
