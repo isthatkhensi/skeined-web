@@ -44,26 +44,23 @@
     />
     <meta name="twitter:image" content="https://skeined.com/og-image.png" />
 
-    <!-- Google Analytics 4.
-         Guarded by hostname on purpose: `develop` deploys to
-         staging.skeined.com, and without this every test click would land in
-         the same property as real traffic and quietly skew it. Nothing loads
-         at all off the live domain, so localhost stays clean too. -->
+    <!-- Google Analytics 4 (G-0XW5FENDFB).
+         The loader is a plain static tag so Google's "detect your tag" check
+         can find it in the page source — it reads the HTML, and a
+         script injected by JS is invisible to it.
+         What is guarded is `config`, which is what actually sends a hit.
+         `develop` deploys to staging.skeined.com, and configuring there would
+         pour test traffic into the same property as real visitors. So staging
+         and localhost load the library and report nothing. -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0XW5FENDFB"></script>
     <script>
-      (function () {
-        var live = ["skeined.com", "www.skeined.com"];
-        if (live.indexOf(location.hostname) === -1) return;
-        var id = "G-0XW5FENDFB";
-        var s = document.createElement("script");
-        s.async = true;
-        s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        window.gtag = gtag;
-        gtag("js", new Date());
-        gtag("config", id);
-      })();
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      if (["skeined.com", "www.skeined.com"].indexOf(location.hostname) !== -1) {
+        gtag("config", "G-0XW5FENDFB");
+      }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
