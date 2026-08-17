@@ -42,15 +42,20 @@ export default function FeatureCard({
         THE IMAGE IS HEIGHT-LIMITED — the frame's height is the only thing that
         sizes it, and widening does nothing at all.
 
-        The two viewports wanted opposite things (founder, 2026-08-17): on a
-        phone a card is nearly full-width and the art still read small, while on
-        a desktop the same frame in a multi-column grid was too big. So mobile
-        gets a taller frame (930) and md+ a shorter one (700) — not one
-        compromise value that suits neither.
+        The two viewports want opposite things (founder, 2026-08-17). On a
+        desktop the art sits in a multi-column grid and a shorter frame (700)
+        is right. On a phone a card is nearly full width and the art still read
+        too small to make out detail — the craft assistant card especially.
+
+        Mobile is now 3/2, which is the ART'S OWN ratio. That is the largest
+        the image can ever be here: the frame stops letterboxing entirely and
+        the image fills it edge to edge. A taller frame would not enlarge it
+        further, only pad above and below, because past this point the image
+        becomes width-limited instead.
       */}
       <div
         className={`min-w-0 px-[22px] pt-[28px] ${
-          ratio ? "" : "aspect-[1728/930] md:aspect-[1728/700]"
+          ratio ? "" : "aspect-[3/2] md:aspect-[1728/700]"
         }`}
         style={ratio ? { aspectRatio: ratio } : undefined}
       >

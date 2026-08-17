@@ -234,10 +234,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              // 308px = 440 * 0.7. The mockup dominated the fold on a phone,
-              // pushing the waitlist form and the Founding Member card out of
-              // view (founder, 2026-08-17).
-              className="relative w-full max-w-[308px]"
+              // Desktop was right at 440 all along — only the phone was wrong,
+              // where the mockup dominated the fold and pushed the waitlist form
+              // and Founding Member card out of view. So the reduction applies
+              // to mobile only (founder, 2026-08-17).
+              className="relative w-full max-w-[308px] md:max-w-[440px]"
             >
               <img
                 src={heroMockup}
