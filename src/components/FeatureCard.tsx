@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 interface FeatureCardProps {
   /** Steps passes its own family tint, matching that step's number circle. */
   tintClass?: string;
@@ -5,8 +6,10 @@ interface FeatureCardProps {
   description: string;
   image: string;
   alt: string;
-  /** aspect ratio for the image frame */
+  /** Fixed ratio at every width. Steps uses this. */
   ratio?: string;
+  /** Ratio below md only, matching this card's own art. Features uses this. */
+  frameMobile?: string;
 }
 
 /** Shared card used by both the Features grid and the Steps list. */
@@ -16,6 +19,7 @@ export default function FeatureCard({
   description,
   image,
   alt,
+  frameMobile,
   // 20% shorter than the original 1728/960 (960 → 768), per the founder's note
   // that the art was crowding both the top of the card and the copy below it.
   // Shrinking the frame rather than padding it in keeps the images full-bleed
@@ -57,9 +61,13 @@ export default function FeatureCard({
       */}
       <div
         className={`min-w-0 px-[14px] pt-[18px] sm:px-[22px] sm:pt-[28px] ${
-          ratio ? "" : "aspect-[3/2] md:aspect-[1728/620]"
+          ratio ? "" : "feature-frame"
         }`}
-        style={ratio ? { aspectRatio: ratio } : undefined}
+        style={
+          ratio
+            ? { aspectRatio: ratio }
+            : ({ "--frame-mobile": frameMobile } as CSSProperties)
+        }
       >
         {/*
           object-CONTAIN, not cover: cover fills the frame and throws away what

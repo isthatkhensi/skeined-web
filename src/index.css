@@ -97,3 +97,20 @@ input:-webkit-autofill:active {
   caret-color: theme("colors.ink");
   transition: background-color 9999s ease-in-out 0s;
 }
+
+/* Feature card frame.
+   Mobile takes a PER-CARD ratio, because the four images are not the same
+   shape (3:2 phones, a very wide Live Activity widget). One shared ratio
+   leaves slack on whichever cards do not match it, and that slack is visible
+   wherever it is put — above the image, or below it between art and heading.
+   Matching each frame to its own art leaves nothing over.
+   Desktop stays uniform: the frame there is far wider than any of the art, so
+   every image is height-limited and none of them has slack to place. */
+.feature-frame {
+  aspect-ratio: var(--frame-mobile, 3 / 2);
+}
+@media (min-width: 768px) {
+  .feature-frame {
+    aspect-ratio: 1728 / 620;
+  }
+}
