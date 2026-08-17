@@ -13,6 +13,19 @@ export interface Feature {
   description: string;
   image: string;
   alt: string;
+  /**
+   * The frame's aspect ratio below md, matching THIS card's own artwork.
+   *
+   * The four images are not the same shape — three are 3:2 phone renders, the
+   * Live Activity is a very wide widget. A single shared ratio leaves slack on
+   * whichever cards do not match it, and that slack is visible wherever it is
+   * put: above the image, or below it in the gap between art and heading.
+   * Matching each frame to its own art leaves nothing over.
+   *
+   * Keep this in step with the file. If an asset is re-exported at a new size,
+   * this number moves with it.
+   */
+  frameMobile: string;
 }
 
 export interface Step {
@@ -29,6 +42,7 @@ export const features: Feature[] = [
     description:
       "Bring in any pattern, even a messy PDF, and follow it cleanly on any device.",
     image: featureImport,
+    frameMobile: "1200 / 634",
     alt: "Importing a pattern from a PDF or a video link",
   },
   {
@@ -51,6 +65,7 @@ export const features: Feature[] = [
     description:
       "Point your camera at a ball band. Skeined reads the brand, weight and fibre straight into your stash.",
     image: featureYarnScan,
+    frameMobile: "1200 / 800",
     alt: "Scanning a yarn label to read its brand, weight and fibre",
   },
   {
@@ -58,6 +73,7 @@ export const features: Feature[] = [
     description:
       "Stuck on a stitch mid-row? Ask and get an answer right there, without losing your place.",
     image: featureAssistant,
+    frameMobile: "1200 / 800",
     alt: "The craft assistant answering a stitch question",
   },
   {
@@ -65,6 +81,7 @@ export const features: Feature[] = [
     description:
       "Your row and your time stay on the Lock Screen while you work. Add a row without unlocking, and it keeps counting offline.",
     image: featureLiveActivity,
+    frameMobile: "1200 / 327",
     alt: "The row counter running on the iPhone Lock Screen",
   },
 ];
