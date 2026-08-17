@@ -47,15 +47,22 @@ export default function FeatureCard({
         is right. On a phone a card is nearly full width and the art still read
         too small to make out detail — the craft assistant card especially.
 
-        Mobile is now 3/2, which is the ART'S OWN ratio. That is the largest
-        the image can ever be here: the frame stops letterboxing entirely and
-        the image fills it edge to edge. A taller frame would not enlarge it
-        further, only pad above and below, because past this point the image
-        becomes width-limited instead.
+        The art files were also mostly empty. Measured: the yarn scanner's
+        content filled 48% of its own width, the Live Activity's 53% of its
+        height. All four are now cropped to their content with a 2% margin, so
+        the frame shows artwork rather than transparent padding — which is what
+        the "too much space above the image" actually was.
+
+        That left them at genuinely different ratios (0.70 portrait through 2.76
+        wide), which is fine and deliberate: each fills whichever dimension
+        constrains it, object-bottom keeps them sitting on a common floor, and
+        nothing is cropped. It does mean the frame's HEIGHT is what sizes the
+        tall ones — cropping the yarn scanner's sides could never enlarge a
+        phone that already ran the full height of its canvas.
       */}
       <div
         className={`min-w-0 px-[22px] pt-[28px] ${
-          ratio ? "" : "aspect-[3/2] md:aspect-[1728/700]"
+          ratio ? "" : "aspect-[5/4] md:aspect-[1728/620]"
         }`}
         style={ratio ? { aspectRatio: ratio } : undefined}
       >
