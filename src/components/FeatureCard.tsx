@@ -20,7 +20,11 @@ export default function FeatureCard({
   // that the art was crowding both the top of the card and the copy below it.
   // Shrinking the frame rather than padding it in keeps the images full-bleed
   // to the card's inner width, so nothing has to be re-exported.
-  ratio = "1728 / 768",
+  // 1728/845, not the original 1728/768. The art is 1.5:1 inside a frame this
+  // wide, so with object-contain the IMAGE IS HEIGHT-LIMITED — the frame's
+  // height is what caps it, and widening would do nothing. 768 -> 845 is the
+  // frame 10% taller, which is the image 10% bigger (founder, 2026-08-17).
+  ratio = "1728 / 845",
 }: FeatureCardProps) {
   return (
     // `min-w-0` is load-bearing, not decoration. As a flex/grid item the card's
