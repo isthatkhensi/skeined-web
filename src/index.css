@@ -81,3 +81,19 @@
     animation: none !important;
   }
 }
+
+/* Chrome paints its own pale-blue background on any field it autofills, and
+   ignores background-color while doing it — so the waitlist input turned blue
+   the moment the browser filled an address in, inside a pill that is otherwise
+   warm white. The long transition is the reliable way to stop it: Chrome
+   animates its highlight in, and a delay it never reaches means the colour is
+   never applied. text-fill-color keeps the typed address in our ink rather
+   than Chrome's near-black. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: theme("colors.ink");
+  caret-color: theme("colors.ink");
+  transition: background-color 9999s ease-in-out 0s;
+}

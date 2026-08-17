@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Brand from "./Brand";
 import heroMockup from "../assets/skeined-counter.png";
 import { detectCurrency, FOUNDING_PRICE } from "../lib/pricing";
@@ -10,7 +11,9 @@ interface WaitlistForm {
   email: string;
 }
 
-type SubmitStatus = "idle" | "success" | "error";
+// No "success": the happy path navigates to /welcome, so the only states
+// this component still renders are the resting one and a failure.
+type SubmitStatus = "idle" | "error";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -31,6 +34,7 @@ const SPOTS_TOTAL: number = 50;
 const SPOTS_CLAIMED: number = 2;
 
 export default function Hero() {
+  const navigate = useNavigate();
   const founding = FOUNDING_PRICE[detectCurrency()];
   const claimedPct = Math.round((SPOTS_CLAIMED / SPOTS_TOTAL) * 100);
 
@@ -69,8 +73,10 @@ export default function Hero() {
       return;
     }
 
-    setStatus("success");
     reset();
+    // A page, not a line of text under the input: the inline message sat below
+    // the fold on a phone, so the form looked like it had done nothing.
+    navigate("/welcome");
   };
 
   return (
@@ -137,7 +143,7 @@ export default function Hero() {
               noValidate
               className="mx-auto mt-7 w-[min(440px,90vw)] scroll-mt-24 lg:mx-0"
             >
-              <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/70 p-[7px] pl-2 shadow-sm backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-heroWash">
+              <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/70 p-[7px] pl-2 shadow-sm backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-clay focus-within:ring-offset-2 focus-within:ring-offset-heroWash">
                 <label htmlFor="email" className="sr-only">
                   Your email address
                 </label>
@@ -172,14 +178,6 @@ export default function Hero() {
               >
                 {errors.email && (
                   <span className="text-ink/90">{errors.email.message}</span>
-                )}
-                {!errors.email && status === "success" && (
-                  <span className="text-ink/90">
-                    You're on the list — thank you for waiting with us. We
-                    don't have automatic emails wired up yet, so there's
-                    nothing in your inbox to watch for just yet — we'll share
-                    the news here (and on @skeined) when Skeined opens.
-                  </span>
                 )}
                 {!errors.email && status === "error" && (
                   <span className="text-ink/90">
