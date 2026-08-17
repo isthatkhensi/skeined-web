@@ -11,6 +11,7 @@ import Confirm from "./pages/Confirm";
 import AuthError from "./pages/AuthError";
 import Get from "./pages/Get";
 import NotFound from "./pages/NotFound";
+import Waitlisted from "./pages/Waitlisted";
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/auth-error" element={<AuthError />} />
         <Route path="/get" element={<Get />} />
+        <Route path="/welcome" element={<Waitlisted />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
