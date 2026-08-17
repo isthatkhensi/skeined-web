@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 interface FeatureCardProps {
   /** Steps passes its own family tint, matching that step's number circle. */
   tintClass?: string;
@@ -5,8 +6,10 @@ interface FeatureCardProps {
   description: string;
   image: string;
   alt: string;
-  /** aspect ratio for the image frame */
+  /** Fixed ratio at every width. Steps uses this. */
   ratio?: string;
+  /** Ratio below md only, matching this card's own art. Features uses this. */
+  frameMobile?: string;
 }
 
 /** Shared card used by both the Features grid and the Steps list. */
@@ -16,11 +19,14 @@ export default function FeatureCard({
   description,
   image,
   alt,
+  frameMobile,
   // 20% shorter than the original 1728/960 (960 → 768), per the founder's note
   // that the art was crowding both the top of the card and the copy below it.
   // Shrinking the frame rather than padding it in keeps the images full-bleed
   // to the card's inner width, so nothing has to be re-exported.
-  ratio = "1728 / 768",
+  // No default. An explicit ratio (Steps passes 1095/640) wins; without one the
+  // frame is RESPONSIVE, which a single inline aspectRatio cannot be.
+  ratio,
 }: FeatureCardProps) {
   return (
     // `min-w-0` is load-bearing, not decoration. As a flex/grid item the card's
@@ -35,27 +41,57 @@ export default function FeatureCard({
         tintClass ?? "bg-clay-tint"
       }`}
     >
-      <div className="min-w-0 px-[22px] pt-[28px]" style={{ aspectRatio: ratio }}>
-        {/*
-          object-CONTAIN, not cover. Cover fills the frame and throws away
-          whatever will not fit, which cropped the tops and bottoms off the art
-          on a phone — the yarn scanner lost its ball band, the import card lost
-          its progress row. Contain scales the whole image down to fit instead,
-          so nothing is lost at any width.
+      {/*
+        THE FRAME MATCHES THE ART, which is the only way to have no empty band.
 
-          object-bottom stays. The art in this set is not a consistent shape —
-          the Lock Screen render is 1864x1049 while the rest are 1536x1024 — and
-          these images all have their subject at the BOTTOM of the canvas
-          (phones cropped at the lower edge, the widget resting low). Anchoring
-          there lines the subjects up across all four cards regardless of shape,
-          which matters as much with contain as it did with cover: without it,
-          a shorter image would float in the middle of its frame while the
-          others sat on the floor.
+        The art is 3:2 (the Live Activity widget 16:9). On mobile the frame is
+        3/2 too, so object-contain fills it exactly and there is nothing left
+        over to show. Get this wrong in the WIDE direction — a frame wider than
+        the art — and the leftover height collects at the top, because
+        object-bottom sends the image to the floor. That is what produced the
+        big empty bands on Pattern Import and On Your Lock Screen.
+
+        Desktop deliberately goes the other way: a much wider frame (1728/620)
+        makes the art height-limited, so it fills the frame vertically, leaves
+        its slack at the SIDES where nothing reads as a gap, and comes out
+        smaller — which is what a multi-column grid wants.
+
+        Padding is tighter on mobile than on sm+ for the same reason: at
+        ~360px every pixel of padding is visibly stolen from the artwork.
+      */}
+      <div
+        className={`min-w-0 px-[14px] pt-[18px] sm:px-[22px] sm:pt-[28px] ${
+          ratio ? "" : "feature-frame"
+        }`}
+        style={
+          ratio
+            ? { aspectRatio: ratio }
+            : ({ "--frame-mobile": frameMobile } as CSSProperties)
+        }
+      >
+        {/*
+          object-CONTAIN, not cover: cover fills the frame and throws away what
+        will not fit, which cropped the tops and bottoms off the art. Contain
+        scales the whole image down, so nothing is lost at any width.
+
+        object-TOP, not bottom. This is the fix for the empty band above the
+        Pattern Import and Lock Screen cards. Those two are wider than the
+        frame, so contain leaves slack in the height — and anchoring to the
+        bottom sent every pixel of that slack to the TOP, where it read as a
+        mysterious gap. Anchored to the top instead, the same slack falls
+        BELOW the image, where it merges with the space that already separates
+        art from heading and reads as ordinary spacing.
+
+        The two files were also trimmed of their own vertical padding (the
+        Lock Screen widget carried 169px of transparent nothing above it, 21%
+        of its height). Trimming alone was not enough: it only converts the
+        image's internal emptiness into frame emptiness. The anchor is what
+        decides whether that emptiness is a defect or a margin.
         */}
         <img
           src={image}
           alt={alt}
-          className="h-full w-full max-w-full rounded-[14px] object-contain object-bottom"
+          className="h-full w-full max-w-full rounded-[14px] object-contain object-top"
           loading="lazy"
         />
       </div>
