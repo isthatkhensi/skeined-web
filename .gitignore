@@ -11,3 +11,7 @@ dist-ssr
 # Local deploy artifacts
 *.zip
 .ftp-deploy-sync-state.json
+
+# TypeScript incremental build cache — machine-specific, and it conflicted on
+# every PR that touched a component. Build output, not source.
+*.tsbuildinfo

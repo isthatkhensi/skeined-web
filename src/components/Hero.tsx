@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Brand from "./Brand";
-import Countdown from "./Countdown";
 import heroMockup from "../assets/skeined-counter.png";
 import { detectCurrency, FOUNDING_PRICE } from "../lib/pricing";
 import { supabase } from "../lib/supabase";
@@ -11,7 +11,9 @@ interface WaitlistForm {
   email: string;
 }
 
-type SubmitStatus = "idle" | "success" | "error";
+// No "success": the happy path navigates to /welcome, so the only states
+// this component still renders are the resting one and a failure.
+type SubmitStatus = "idle" | "error";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -32,6 +34,7 @@ const SPOTS_TOTAL: number = 50;
 const SPOTS_CLAIMED: number = 2;
 
 export default function Hero() {
+  const navigate = useNavigate();
   const founding = FOUNDING_PRICE[detectCurrency()];
   const claimedPct = Math.round((SPOTS_CLAIMED / SPOTS_TOTAL) * 100);
 
@@ -70,8 +73,10 @@ export default function Hero() {
       return;
     }
 
-    setStatus("success");
     reset();
+    // A page, not a line of text under the input: the inline message sat below
+    // the fold on a phone, so the form looked like it had done nothing.
+    navigate("/welcome");
   };
 
   return (
@@ -136,9 +141,9 @@ export default function Hero() {
               transition={{ delay: 0.4, duration: 0.6 }}
               onSubmit={handleSubmit(onSubmit)}
               noValidate
-              className="mx-auto mt-7 w-[min(440px,90vw)] scroll-mt-24 lg:mx-0"
+              className="mx-auto mt-7 w-full max-w-[440px] scroll-mt-24 lg:mx-0"
             >
-              <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/70 p-[7px] pl-2 shadow-sm backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-heroWash">
+              <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/70 p-[7px] pl-2 shadow-sm backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-clay focus-within:ring-offset-2 focus-within:ring-offset-heroWash">
                 <label htmlFor="email" className="sr-only">
                   Your email address
                 </label>
@@ -174,14 +179,6 @@ export default function Hero() {
                 {errors.email && (
                   <span className="text-ink/90">{errors.email.message}</span>
                 )}
-                {!errors.email && status === "success" && (
-                  <span className="text-ink/90">
-                    You're on the list — thank you for waiting with us. We
-                    don't have automatic emails wired up yet, so there's
-                    nothing in your inbox to watch for just yet — we'll share
-                    the news here (and on @skeined) when Skeined opens.
-                  </span>
-                )}
                 {!errors.email && status === "error" && (
                   <span className="text-ink/90">
                     That didn't quite make it through — mind trying again in
@@ -195,7 +192,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="mx-auto mt-6 w-[min(440px,90vw)] rounded-xl border border-linen bg-card p-4 shadow-md shadow-black/5 lg:mx-0"
+              className="mx-auto mt-6 w-full max-w-[440px] rounded-xl border border-linen bg-card p-4 shadow-md shadow-black/5 lg:mx-0"
             >
               <p className="text-sm text-ink">
                 <span className="font-bold">Founding Members</span> get Pro for
@@ -246,13 +243,6 @@ export default function Hero() {
                 width={1419}
                 height={2276}
               />
-              {/* Shifted LEFT so the strip mostly hangs beside the phone and only
-                  its right-hand blocks cross the mockup — hovering rather than
-                  sitting on it. Mobile keeps a small nudge only: there's no room
-                  to hang off a 390px column without clipping. */}
-              <div className="absolute inset-x-0 top-1/2 z-10 w-full -translate-y-1/2 -translate-x-6 px-2 sm:inset-x-auto sm:right-[260px] sm:w-[118%] sm:translate-x-0 sm:px-0">
-                <Countdown />
-              </div>
             </motion.div>
           </div>
         </div>
