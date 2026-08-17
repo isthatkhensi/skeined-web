@@ -234,7 +234,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-[440px]"
+              // 308px = 440 * 0.7. The mockup dominated the fold on a phone,
+              // pushing the waitlist form and the Founding Member card out of
+              // view (founder, 2026-08-17).
+              className="relative w-full max-w-[308px]"
             >
               <img
                 src={heroMockup}

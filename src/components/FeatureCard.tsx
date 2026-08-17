@@ -20,7 +20,9 @@ export default function FeatureCard({
   // that the art was crowding both the top of the card and the copy below it.
   // Shrinking the frame rather than padding it in keeps the images full-bleed
   // to the card's inner width, so nothing has to be re-exported.
-  ratio = "1728 / 768",
+  // No default. An explicit ratio (Steps passes 1095/640) wins; without one the
+  // frame is RESPONSIVE, which a single inline aspectRatio cannot be.
+  ratio,
 }: FeatureCardProps) {
   return (
     // `min-w-0` is load-bearing, not decoration. As a flex/grid item the card's
@@ -35,7 +37,23 @@ export default function FeatureCard({
         tintClass ?? "bg-clay-tint"
       }`}
     >
-      <div className="min-w-0 px-[22px] pt-[28px]" style={{ aspectRatio: ratio }}>
+      {/*
+        The art is 1.5:1 inside a frame wider than that, so under object-contain
+        THE IMAGE IS HEIGHT-LIMITED — the frame's height is the only thing that
+        sizes it, and widening does nothing at all.
+
+        The two viewports wanted opposite things (founder, 2026-08-17): on a
+        phone a card is nearly full-width and the art still read small, while on
+        a desktop the same frame in a multi-column grid was too big. So mobile
+        gets a taller frame (930) and md+ a shorter one (700) — not one
+        compromise value that suits neither.
+      */}
+      <div
+        className={`min-w-0 px-[22px] pt-[28px] ${
+          ratio ? "" : "aspect-[1728/930] md:aspect-[1728/700]"
+        }`}
+        style={ratio ? { aspectRatio: ratio } : undefined}
+      >
         {/*
           object-CONTAIN, not cover. Cover fills the frame and throws away
           whatever will not fit, which cropped the tops and bottoms off the art
