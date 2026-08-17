@@ -141,7 +141,7 @@ export default function Hero() {
               transition={{ delay: 0.4, duration: 0.6 }}
               onSubmit={handleSubmit(onSubmit)}
               noValidate
-              className="mx-auto mt-7 w-[min(440px,90vw)] scroll-mt-24 lg:mx-0"
+              className="mx-auto mt-7 w-full max-w-[440px] scroll-mt-24 lg:mx-0"
             >
               <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/70 p-[7px] pl-2 shadow-sm backdrop-blur-xl transition focus-within:ring-2 focus-within:ring-clay focus-within:ring-offset-2 focus-within:ring-offset-heroWash">
                 <label htmlFor="email" className="sr-only">
@@ -192,7 +192,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="mx-auto mt-6 w-[min(440px,90vw)] rounded-xl border border-linen bg-card p-4 shadow-md shadow-black/5 lg:mx-0"
+              className="mx-auto mt-6 w-full max-w-[440px] rounded-xl border border-linen bg-card p-4 shadow-md shadow-black/5 lg:mx-0"
             >
               <p className="text-sm text-ink">
                 <span className="font-bold">Founding Members</span> get Pro for

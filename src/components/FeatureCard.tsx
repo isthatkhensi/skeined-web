@@ -37,19 +37,25 @@ export default function FeatureCard({
     >
       <div className="min-w-0 px-[22px] pt-[28px]" style={{ aspectRatio: ratio }}>
         {/*
-          object-bottom, not object-top. The art in this set is not a consistent
-          shape — the Lock Screen render is 1864x1049 while the rest are
-          1536x1024 — so with object-cover the crop has to be anchored
-          somewhere, and anchoring to the top left the Lock Screen card sitting
-          visibly higher in its frame than the phones in the others. These
-          images all have their subject at the BOTTOM of the canvas (phones
-          cropped at the lower edge, the widget resting low), so anchoring there
-          lines the subjects up across all four cards regardless of shape.
+          object-CONTAIN, not cover. Cover fills the frame and throws away
+          whatever will not fit, which cropped the tops and bottoms off the art
+          on a phone — the yarn scanner lost its ball band, the import card lost
+          its progress row. Contain scales the whole image down to fit instead,
+          so nothing is lost at any width.
+
+          object-bottom stays. The art in this set is not a consistent shape —
+          the Lock Screen render is 1864x1049 while the rest are 1536x1024 — and
+          these images all have their subject at the BOTTOM of the canvas
+          (phones cropped at the lower edge, the widget resting low). Anchoring
+          there lines the subjects up across all four cards regardless of shape,
+          which matters as much with contain as it did with cover: without it,
+          a shorter image would float in the middle of its frame while the
+          others sat on the floor.
         */}
         <img
           src={image}
           alt={alt}
-          className="h-full w-full max-w-full rounded-[14px] object-cover object-bottom"
+          className="h-full w-full max-w-full rounded-[14px] object-contain object-bottom"
           loading="lazy"
         />
       </div>
