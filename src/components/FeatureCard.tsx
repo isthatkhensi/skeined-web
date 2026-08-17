@@ -62,25 +62,28 @@ export default function FeatureCard({
         style={ratio ? { aspectRatio: ratio } : undefined}
       >
         {/*
-          object-CONTAIN, not cover. Cover fills the frame and throws away
-          whatever will not fit, which cropped the tops and bottoms off the art
-          on a phone — the yarn scanner lost its ball band, the import card lost
-          its progress row. Contain scales the whole image down to fit instead,
-          so nothing is lost at any width.
+          object-CONTAIN, not cover: cover fills the frame and throws away what
+        will not fit, which cropped the tops and bottoms off the art. Contain
+        scales the whole image down, so nothing is lost at any width.
 
-          object-bottom stays. The art in this set is not a consistent shape —
-          the Lock Screen render is 1864x1049 while the rest are 1536x1024 — and
-          these images all have their subject at the BOTTOM of the canvas
-          (phones cropped at the lower edge, the widget resting low). Anchoring
-          there lines the subjects up across all four cards regardless of shape,
-          which matters as much with contain as it did with cover: without it,
-          a shorter image would float in the middle of its frame while the
-          others sat on the floor.
+        object-TOP, not bottom. This is the fix for the empty band above the
+        Pattern Import and Lock Screen cards. Those two are wider than the
+        frame, so contain leaves slack in the height — and anchoring to the
+        bottom sent every pixel of that slack to the TOP, where it read as a
+        mysterious gap. Anchored to the top instead, the same slack falls
+        BELOW the image, where it merges with the space that already separates
+        art from heading and reads as ordinary spacing.
+
+        The two files were also trimmed of their own vertical padding (the
+        Lock Screen widget carried 169px of transparent nothing above it, 21%
+        of its height). Trimming alone was not enough: it only converts the
+        image's internal emptiness into frame emptiness. The anchor is what
+        decides whether that emptiness is a defect or a margin.
         */}
         <img
           src={image}
           alt={alt}
-          className="h-full w-full max-w-full rounded-[14px] object-contain object-bottom"
+          className="h-full w-full max-w-full rounded-[14px] object-contain object-top"
           loading="lazy"
         />
       </div>
