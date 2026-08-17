@@ -38,31 +38,26 @@ export default function FeatureCard({
       }`}
     >
       {/*
-        The art is 1.5:1 inside a frame wider than that, so under object-contain
-        THE IMAGE IS HEIGHT-LIMITED — the frame's height is the only thing that
-        sizes it, and widening does nothing at all.
+        THE FRAME MATCHES THE ART, which is the only way to have no empty band.
 
-        The two viewports want opposite things (founder, 2026-08-17). On a
-        desktop the art sits in a multi-column grid and a shorter frame (700)
-        is right. On a phone a card is nearly full width and the art still read
-        too small to make out detail — the craft assistant card especially.
+        The art is 3:2 (the Live Activity widget 16:9). On mobile the frame is
+        3/2 too, so object-contain fills it exactly and there is nothing left
+        over to show. Get this wrong in the WIDE direction — a frame wider than
+        the art — and the leftover height collects at the top, because
+        object-bottom sends the image to the floor. That is what produced the
+        big empty bands on Pattern Import and On Your Lock Screen.
 
-        The art files were also mostly empty. Measured: the yarn scanner's
-        content filled 48% of its own width, the Live Activity's 53% of its
-        height. All four are now cropped to their content with a 2% margin, so
-        the frame shows artwork rather than transparent padding — which is what
-        the "too much space above the image" actually was.
+        Desktop deliberately goes the other way: a much wider frame (1728/620)
+        makes the art height-limited, so it fills the frame vertically, leaves
+        its slack at the SIDES where nothing reads as a gap, and comes out
+        smaller — which is what a multi-column grid wants.
 
-        That left them at genuinely different ratios (0.70 portrait through 2.76
-        wide), which is fine and deliberate: each fills whichever dimension
-        constrains it, object-bottom keeps them sitting on a common floor, and
-        nothing is cropped. It does mean the frame's HEIGHT is what sizes the
-        tall ones — cropping the yarn scanner's sides could never enlarge a
-        phone that already ran the full height of its canvas.
+        Padding is tighter on mobile than on sm+ for the same reason: at
+        ~360px every pixel of padding is visibly stolen from the artwork.
       */}
       <div
-        className={`min-w-0 px-[22px] pt-[28px] ${
-          ratio ? "" : "aspect-[5/4] md:aspect-[1728/620]"
+        className={`min-w-0 px-[14px] pt-[18px] sm:px-[22px] sm:pt-[28px] ${
+          ratio ? "" : "aspect-[3/2] md:aspect-[1728/620]"
         }`}
         style={ratio ? { aspectRatio: ratio } : undefined}
       >
