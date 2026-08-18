@@ -10,6 +10,12 @@ interface FeatureCardProps {
   ratio?: string;
   /** Ratio below md only, matching this card's own art. Features uses this. */
   frameMobile?: string;
+  /**
+   * Extra horizontal padding on the frame, for art that is a single small
+   * element rather than a phone. The Lock Screen widget at full card width
+   * read as an oversized bar; inset it and it reads as a widget.
+   */
+  insetClass?: string;
 }
 
 /** Shared card used by both the Features grid and the Steps list. */
@@ -20,6 +26,7 @@ export default function FeatureCard({
   image,
   alt,
   frameMobile,
+  insetClass,
   // 20% shorter than the original 1728/960 (960 → 768), per the founder's note
   // that the art was crowding both the top of the card and the copy below it.
   // Shrinking the frame rather than padding it in keeps the images full-bleed
@@ -60,7 +67,7 @@ export default function FeatureCard({
         ~360px every pixel of padding is visibly stolen from the artwork.
       */}
       <div
-        className={`min-w-0 px-[14px] pt-[18px] sm:px-[22px] sm:pt-[28px] ${
+        className={`min-w-0 px-[14px] pt-[18px] sm:px-[22px] sm:pt-[28px] ${insetClass ?? ""} ${
           ratio ? "" : "feature-frame"
         }`}
         style={
@@ -96,7 +103,11 @@ export default function FeatureCard({
         />
       </div>
       {/* pt-7 opens the gap under the art, pb-6 lifts the copy off the floor. */}
-      <div className="px-7 pb-6 pt-7 sm:px-[30px]">
+      {/* mt-auto pins the copy to the card's floor. Cards in a row stretch to
+          the tallest, and without this the text sat directly under its own art
+          — so a short image left a pool of empty tint BELOW the words, and the
+          headings across a row never lined up. */}
+      <div className="mt-auto px-7 pb-6 pt-7 sm:px-[30px]">
         <h3 className="text-xl font-semibold tracking-tight text-ink">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p>
       </div>

@@ -26,6 +26,8 @@ export interface Feature {
    * this number moves with it.
    */
   frameMobile: string;
+  /** Extra horizontal padding, for art that is one small element not a phone. */
+  insetClass?: string;
 }
 
 export interface Step {
@@ -81,7 +83,8 @@ export const features: Feature[] = [
     description:
       "Your row and your time stay on the Lock Screen while you work. Add a row without unlocking, and it keeps counting offline.",
     image: featureLiveActivity,
-    frameMobile: "1200 / 327",
+    frameMobile: "1200 / 675",
+    insetClass: "px-[12%] sm:px-[14%]",
     alt: "The row counter running on the iPhone Lock Screen",
   },
 ];

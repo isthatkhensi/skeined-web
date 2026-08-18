@@ -22,21 +22,18 @@ const navLinks = [
   { label: "FAQs", href: "#faqs" },
 ];
 
-// Founding Member isn't purchasable yet. This number is a MANUAL count the
-// founder maintains, and it must always be one she can point at — never a
-// scarcity figure we invented. Currently 2: two makers have committed via the
-// waitlist (founder, 2026-08-02). Note they are not paid and hold no reserved
-// spot; when purchases open they go through the same queue as everyone else,
-// so this figure can move down as well as up.
-// TODO(founder): once purchases go live, wire SPOTS_CLAIMED to the real paid
-// count (a Supabase count query / RPC) and delete the hardcoded value.
+// Fifty is the real cap, set in the app (FOUNDING_MEMBER_CAP). It is the only
+// number here, and it is true today.
+//
+// There is deliberately NO counter. Nobody can buy until launch, so any "claimed"
+// figure would be either zero or invented — and a waitlist count is not a claim
+// count: someone who typed their email in has not committed to a price. When
+// purchases open, a real paid count can go here and nowhere before then.
 const SPOTS_TOTAL: number = 50;
-const SPOTS_CLAIMED: number = 2;
 
 export default function Hero() {
   const navigate = useNavigate();
   const founding = FOUNDING_PRICE[detectCurrency()];
-  const claimedPct = Math.round((SPOTS_CLAIMED / SPOTS_TOTAL) * 100);
 
   const [status, setStatus] = useState<SubmitStatus>("idle");
 
@@ -196,34 +193,15 @@ export default function Hero() {
             >
               <p className="text-sm text-ink">
                 <span className="font-bold">Founding Members</span> get Pro for
-                life — {founding} once.
+                life — {founding} once, never a subscription.
               </p>
-              {SPOTS_CLAIMED > 0 && (
-                <div
-                  className="mt-3 h-2 w-full overflow-hidden rounded-full bg-linen"
-                  role="progressbar"
-                  aria-valuenow={SPOTS_CLAIMED}
-                  aria-valuemin={0}
-                  aria-valuemax={SPOTS_TOTAL}
-                >
-                  <div
-                    className="h-full rounded-full bg-clay"
-                    style={{ width: `${claimedPct}%` }}
-                  />
-                </div>
-              )}
               <p className="mt-2 text-xs font-medium text-ink/70">
-                {/* Leads with makers WAITING, which is true today, rather than
-                    spots claimed, which isn't yet — the two on the list are
-                    committed but unpaid, and go through the same queue as
-                    everyone else when purchases open. Once every spot is gone
-                    the "spots left" half drops away and only the count of
-                    makers remains. */}
-                {SPOTS_CLAIMED > 0
-                  ? SPOTS_CLAIMED >= SPOTS_TOTAL
-                    ? `${SPOTS_CLAIMED} makers already waiting`
-                    : `${SPOTS_CLAIMED} ${SPOTS_CLAIMED === 1 ? "maker" : "makers"} already waiting · ${SPOTS_TOTAL - SPOTS_CLAIMED} spots left`
-                  : `${SPOTS_TOTAL} Founding Member spots — be first to claim one.`}
+                {/* What actually makes this worth wanting: the cap is real, the
+                    saving compounds against a subscription that never stops,
+                    and the waitlist is the only way to be told in time. No
+                    counter — see SPOTS_TOTAL above. */}
+                Only {SPOTS_TOTAL} places, and they open on launch day. Everyone
+                on the waitlist hears first.
               </p>
             </motion.div>
           </div>
