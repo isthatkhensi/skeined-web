@@ -5,7 +5,7 @@ export const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.malhq.skeined"; // TODO: confirm full URL once live
 export const APP_DEEP_LINK = "skeined://"; // custom URL scheme handled by the app
 
-export const SUPPORT_EMAIL = "help@skeined.com";
+export const SUPPORT_EMAIL = "support@skeined.com";
 
 // TODO(founder): confirm before publishing — is Android live, or "coming soon"?
 export const ANDROID_AVAILABLE = false;
