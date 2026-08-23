@@ -7,7 +7,7 @@
 
 export const LEGAL_READY = true;
 
-export const privacyMarkdown = `**Last updated:** 14 August 2026
+export const privacyMarkdown = `**Last updated:** 23 August 2026
 
 Skeined ("we," "us") is a knitting and crochet companion app, made by MalHQ, based in Johannesburg, South Africa. This policy explains what we collect, why, and what your rights are. Questions: **privacy@skeined.com**.
 
@@ -23,6 +23,8 @@ Skeined ("we," "us") is a knitting and crochet companion app, made by MalHQ, bas
 
 **Device information.** A push-notification token, if you've enabled notifications, so we can send you the reminders you've asked for. When the app crashes, basic diagnostic data — device model, operating-system version, app version, and the error trace — is sent to our crash-reporting provider (Sentry) so we can find and fix the problem. It's tied to crashes, not used to track you, and carries no advertising identifiers.
 
+**How you use the app.** We record a small number of product events — which steps of setup you finished, and whether you came back to Skeined a few days after installing. These are linked to your account so we can tell one person returning from ten people arriving, and they tell us whether the app is actually helping. Your email address and anything you type are stripped out before they are sent. We do not record what you make, what you count, or what your patterns say.
+
 ## How pattern content is processed
 
 Some features are powered by a third-party AI provider (Anthropic). When you import a pattern (PDF, pasted text, or a YouTube link), scan a yarn label, or ask the in-app craft assistant a question, that content is sent from our own servers to Anthropic to be read and turned into a structured pattern or an answer. This always happens through our backend — never directly from your device to Anthropic — and your content is not used by Anthropic to train their models under our agreement with them. This is genuinely how the "paste a messy pattern, get a clean counter" feature (and the craft assistant) work — we're telling you plainly rather than burying it.
@@ -36,6 +38,7 @@ We also learn from how imported patterns parse. When a pattern's structure trips
 - **Apple App Store / Google Play / RevenueCat** — process purchases and report back your subscription status. They handle your payment details under their own privacy policies; we never receive them.
 - **Expo** — delivers push notifications you've opted into, and over-the-air app updates.
 - **Sentry** — receives crash diagnostics (device/OS/app version and error traces) when the app crashes, so we can fix it. Only active in released builds, never in advertising.
+- **PostHog** — receives the product events described above (setup steps, and whether you returned), linked to your account ID so the counts are honest. No emails, no free text, no advertising identifiers, and nothing that follows you to other apps or websites.
 - **Google Analytics** — on the skeined.com **website only**, not in the app. It tells us how many people visited and which pages they read, using cookies set by Google. We use it to understand whether the site explains Skeined well, and for nothing else. You can opt out for every site you visit with [Google's browser add-on](https://tools.google.com/dlpage/gaoptout), or by blocking cookies in your browser — the site works exactly the same either way.
 
 **We do not use advertising networks. We do not sell your data, ever, to anyone.** The website's analytics cookies are for our own understanding of the site; they are not used to build a profile of you or to follow you elsewhere. We don't share your patterns, photos, or projects with other Skeined users unless a future feature explicitly asks you to publish or share something, and you choose to.
@@ -76,7 +79,7 @@ If we make a material change, we'll let you know — through the app or by email
 **privacy@skeined.com**
 `;
 
-export const termsMarkdown = `**Last updated:** 30 July 2026
+export const termsMarkdown = `**Last updated:** 23 August 2026
 
 These terms govern your use of Skeined, made by MalHQ. By creating an account or using the app, you agree to them. Questions: **legal@skeined.com** (or privacy@skeined.com — your call whether to run one shared inbox for both).
 
@@ -90,7 +93,7 @@ You must be at least 13 years old (or the minimum age of digital consent where y
 
 ## Subscriptions and purchases
 
-- **Pro** is an auto-renewing subscription (monthly or annual), billed through the Apple App Store or Google Play. Every new account gets a 7-day free trial of Pro; it converts to a paid subscription automatically unless you cancel first, through your App Store or Play Store account settings — we can't cancel it from our side.
+- **Pro** is an auto-renewing subscription (monthly or annual), billed through the Apple App Store or Google Play. If a free trial is offered, it is offered by the store at the moment you subscribe, and its length and price are shown to you before you confirm. A subscription renews automatically until you cancel it, which you do through your App Store or Play Store account settings — we can't cancel it from our side.
 - **Founding Member** is a **one-time, non-recurring purchase**, limited to the first 50 buyers, granting **permanent Pro access** — never billed again.
 - Refunds are handled by Apple or Google per their own policies, not directly by us — we're not able to issue refunds ourselves for purchases made through their stores.
 
