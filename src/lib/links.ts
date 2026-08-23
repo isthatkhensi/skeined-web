@@ -9,3 +9,12 @@ export const SUPPORT_EMAIL = "help@skeined.com";
 
 // TODO(founder): confirm before publishing — is Android live, or "coming soon"?
 export const ANDROID_AVAILABLE = false;
+
+/**
+ * Where /beta sends people to sign up as an Android tester.
+ *
+ * TODO(founder): paste the Google Form URL. Until it is real, the /beta CTA
+ * renders as plain text rather than a dead button — a broken link from an
+ * Instagram story is worse than no link at all.
+ */
+export const BETA_FORM_URL = "";
