@@ -124,11 +124,9 @@ export default function Hero() {
               transition={{ delay: 0.25, duration: 0.6 }}
               className="mx-auto mt-5 max-w-[440px] text-[18px] leading-relaxed text-ink/90 lg:mx-0"
             >
-              Import patterns from PDFs and YouTube tutorials.
-              <br />
-              Track every row. Scan yarn labels. Organise your stash.
-              <br />
-              Pick up exactly where you left off.
+              Bring in a YouTube tutorial or a PDF, and it becomes rows that
+              tell you what to do next. Scan your yarn labels into your stash.
+              And when both hands are busy, just count out loud.
             </motion.p>
 
             <motion.form
@@ -191,17 +189,15 @@ export default function Hero() {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="mx-auto mt-6 w-full max-w-[440px] rounded-xl border border-linen bg-card p-4 shadow-md shadow-black/5 lg:mx-0"
             >
+              {/* One paragraph, not a terms list. The cap is real (SPOTS_TOTAL
+                  mirrors the app's FOUNDING_MEMBER_CAP) and the database
+                  enforces it, so the scarcity here is a fact rather than a
+                  device. No counter — see SPOTS_TOTAL above. */}
               <p className="text-sm text-ink">
-                <span className="font-bold">Founding Members</span> get Pro for
-                life — {founding} once, never a subscription.
-              </p>
-              <p className="mt-2 text-xs font-medium text-ink/70">
-                {/* What actually makes this worth wanting: the cap is real, the
-                    saving compounds against a subscription that never stops,
-                    and the waitlist is the only way to be told in time. No
-                    counter — see SPOTS_TOTAL above. */}
-                Only {SPOTS_TOTAL} places, and they open on launch day. Everyone
-                on the waitlist hears first.
+                The first {SPOTS_TOTAL} makers become{" "}
+                <span className="font-bold">Founding Members</span> — Pro for
+                life, {founding} once. Places open on launch day, and the
+                waitlist hears first.
               </p>
             </motion.div>
           </div>
