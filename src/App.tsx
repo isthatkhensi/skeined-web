@@ -12,12 +12,18 @@ import AuthError from "./pages/AuthError";
 import Get from "./pages/Get";
 import NotFound from "./pages/NotFound";
 import Waitlisted from "./pages/Waitlisted";
+import Beta from "./pages/Beta";
+import Changelog from "./pages/Changelog";
+import BetaBanner from "./components/BetaBanner";
 
 export default function App() {
   return (
     <>
       <ScrollToTop />
       <PageViews />
+      {/* Above <Routes> so it shows on every page, including a landing page
+          someone reached directly from a story. */}
+      <BetaBanner />
       <Routes>
         {/* Homepage */}
         <Route path="/" element={<Landing />} />
@@ -28,6 +34,8 @@ export default function App() {
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/beta" element={<Beta />} />
+        <Route path="/changelog" element={<Changelog />} />
 
         {/* Utility pages — reached only via direct links, not in nav/footer */}
         <Route path="/delete-account" element={<DeleteAccount />} />
