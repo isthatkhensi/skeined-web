@@ -108,6 +108,12 @@ export default function Footer() {
             >
               Support
             </Link>
+            <Link
+              to="/changelog"
+              className="relative inline-block transition before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] hover:text-ink"
+            >
+              What's new
+            </Link>
           </nav>
         </div>
       </div>

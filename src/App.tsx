@@ -13,6 +13,7 @@ import Get from "./pages/Get";
 import NotFound from "./pages/NotFound";
 import Waitlisted from "./pages/Waitlisted";
 import Beta from "./pages/Beta";
+import Changelog from "./pages/Changelog";
 import BetaBanner from "./components/BetaBanner";
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/support" element={<Support />} />
         <Route path="/beta" element={<Beta />} />
+        <Route path="/changelog" element={<Changelog />} />
 
         {/* Utility pages — reached only via direct links, not in nav/footer */}
         <Route path="/delete-account" element={<DeleteAccount />} />
