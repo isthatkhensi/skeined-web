@@ -50,9 +50,9 @@ export default function BetaBanner() {
     <div className="sticky top-0 z-50 bg-mulberry text-page">
       <div className="mx-auto flex max-w-content items-center gap-3 px-5 py-2.5 sm:px-10">
         <p className="min-w-0 flex-1 text-[13px] leading-snug sm:text-sm">
-          <span className="font-semibold">Android testers wanted.</span>{" "}
+          <span className="font-semibold">Testers wanted.</span>{" "}
           <span className="text-page/80">
-            Try Skeined before anyone else and help shape it.
+            Try Skeined on iPhone or Android before anyone else, and help shape it.
           </span>{" "}
           <Link
             to="/beta"

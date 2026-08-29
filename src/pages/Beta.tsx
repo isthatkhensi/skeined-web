@@ -13,7 +13,7 @@ export default function Beta() {
   return (
     <PageShell
       title="Be an early tester"
-      intro="Skeined is finished and in testing. Before it reaches the Play Store, Google asks for a small group of real makers to live with it for a couple of weeks — and I would rather that group were knitters and crocheters than strangers."
+      intro="Skeined is finished and in testing. Before it reaches the App Store and Google Play, I need a small group of real makers to live with it for a couple of weeks — and I would rather that group were knitters and crocheters than strangers."
     >
       <div className="rounded-2xl border border-linen bg-card p-6 shadow-sm sm:p-8">
         <h2 className="text-lg font-semibold text-ink">What you get</h2>
@@ -35,8 +35,9 @@ export default function Beta() {
         <h2 className="mt-8 text-lg font-semibold text-ink">What I need</h2>
         <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-muted">
           <li>
-            An Android phone and the Google account you use on it — that
-            address is what Google needs to let you in.
+            An iPhone or an Android phone, and the email address you would like
+            your invite sent to. On Android it needs to be the Google account
+            you use on the phone, because that is what Google checks.
           </li>
           <li>
             To actually install it and use it on something you are making. Two
@@ -69,8 +70,9 @@ export default function Beta() {
       )}
 
       <p className="mt-6 text-sm leading-relaxed text-faint">
-        Testing is on Android only for now. If you are on iPhone, the waitlist
-        is the place to be — launch is close.
+        iPhone testing runs through TestFlight, Android through Google Play.
+        Either way I will send you the link and walk you through it — there is
+        nothing technical to work out on your side.
       </p>
     </PageShell>
   );
