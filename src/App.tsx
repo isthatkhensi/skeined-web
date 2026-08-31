@@ -14,6 +14,7 @@ import NotFound from "./pages/NotFound";
 import Waitlisted from "./pages/Waitlisted";
 import Beta from "./pages/Beta";
 import Changelog from "./pages/Changelog";
+import Install from "./pages/Install";
 import BetaBanner from "./components/BetaBanner";
 
 export default function App() {
@@ -36,6 +37,8 @@ export default function App() {
         <Route path="/support" element={<Support />} />
         <Route path="/beta" element={<Beta />} />
         <Route path="/changelog" element={<Changelog />} />
+        {/* Not in nav — reached only from a tester email. */}
+        <Route path="/install" element={<Install />} />
 
         {/* Utility pages — reached only via direct links, not in nav/footer */}
         <Route path="/delete-account" element={<DeleteAccount />} />
