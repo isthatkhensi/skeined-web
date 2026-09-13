@@ -33,6 +33,23 @@ export default function Footer() {
               The calmest way to import patterns, keep your yarn in order, and
               never lose your place in a row. Coming soon to iOS and Android.
             </p>
+            {/* Reach us — the numbers and postal address the store listings and
+                legal pages point at. tel: links, so a phone opens the dialler. */}
+            <ul className="mt-5 flex flex-col gap-1.5 text-sm text-ink/90">
+              <li>
+                <a href="tel:+27823495441" className="transition hover:text-ink">
+                  +27 82 349 5441 <span className="text-ink/60">(South Africa)</span>
+                </a>
+              </li>
+              <li>
+                <a href="tel:+447470404323" className="transition hover:text-ink">
+                  +44 7470 404323 <span className="text-ink/60">(United Kingdom)</span>
+                </a>
+              </li>
+              <li className="text-ink/80">
+                MalHQ · Private Bag X9951, P.O. Box 42, Sandton 2146, South Africa
+              </li>
+            </ul>
             <ul className="mt-6 flex items-center gap-3">
               {socials.map((s) => (
                 <li key={s.label}>
