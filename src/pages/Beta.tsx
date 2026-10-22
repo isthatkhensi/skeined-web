@@ -2,7 +2,8 @@ import PageShell from "../components/PageShell";
 import { BETA_FORM_URL } from "../lib/links";
 
 /**
- * The page an Instagram story sticker points at.
+ * The page an Instagram story sticker points at (early access; the URL stays
+ * /beta because it is already printed in stories and emails).
  *
  * Its whole reason to exist is that "skeined.com/beta" reads like a company
  * and a raw forms.gle link reads like a scam. It should stay one screen —
@@ -12,8 +13,8 @@ import { BETA_FORM_URL } from "../lib/links";
 export default function Beta() {
   return (
     <PageShell
-      title="Be an early tester"
-      intro="Skeined is finished and in testing. Before it reaches the App Store and Google Play, I need a small group of real makers to live with it for a couple of weeks — and I would rather that group were knitters and crocheters than strangers."
+      title="Get early access"
+      intro="Skeined is finished and launching on the App Store and Google Play very soon. Until then, a small group of makers gets it early, and helps shape what comes next. I would love that group to be knitters and crocheters."
     >
       <div className="rounded-2xl border border-linen bg-card p-6 shadow-sm sm:p-8">
         <h2 className="text-lg font-semibold text-ink">What you get</h2>
@@ -23,16 +24,16 @@ export default function Beta() {
             scanning, the craft assistant.
           </li>
           <li>
-            Every Pro feature unlocked for the whole test, free. No card, no
+            Every Pro feature unlocked during early access, free. No card, no
             trial that quietly turns into a subscription.
           </li>
           <li>
-            A say in what changes. Testers have already redirected real
+            A say in what comes next. Early makers have already changed real
             decisions, and I read every message myself.
           </li>
         </ul>
 
-        <h2 className="mt-8 text-lg font-semibold text-ink">What I need</h2>
+        <h2 className="mt-8 text-lg font-semibold text-ink">What I ask</h2>
         <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-muted">
           <li>
             An iPhone or an Android phone, and the email address you would like
@@ -40,8 +41,8 @@ export default function Beta() {
             you use on the phone, because that is what Google checks.
           </li>
           <li>
-            To actually install it and use it on something you are making. Two
-            weeks, no minimum hours.
+            To use it on something you are actually making. No minimum hours,
+            no homework.
           </li>
           <li>
             To tell me when something is wrong. Especially the small
@@ -70,9 +71,9 @@ export default function Beta() {
       )}
 
       <p className="mt-6 text-sm leading-relaxed text-faint">
-        iPhone testing runs through TestFlight, Android through Google Play.
-        Either way I will send you the link and walk you through it — there is
-        nothing technical to work out on your side.
+        Early access on iPhone runs through TestFlight, and on Android through
+        Google Play. Either way I will send you the link and walk you through
+        it. There is nothing technical to work out on your side.
       </p>
     </PageShell>
   );
