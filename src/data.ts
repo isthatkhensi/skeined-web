@@ -44,31 +44,21 @@ export const features: Feature[] = [
     description:
       "Bring in any pattern, even a messy PDF, and follow it cleanly on any device.",
     image: featureImport,
-    frameMobile: "1200 / 634",
-    alt: "Importing a pattern from a PDF or a video link",
+    frameMobile: "1200 / 800",
+    alt: "Choosing where a pattern comes from, and Skeined reading a PDF pattern",
   },
   {
     // Replaced Chart Generation, which is held back for v2 (FEATURES.chartView
     // is false in the app). Nothing on this site may promise it until it ships.
     //
-    // TODO (founder, 12 Aug 2026 — shipped as-is deliberately, revisit after
-    // launch): feature-yarn-scan.webp shows a real Red Heart Super Saver ball
-    // band, logo and all. Third-party branding in marketing art is a trademark
-    // risk we do not need to carry, and it is the only image on the site we
-    // could not defend if asked.
-    //
-    // The replacement is already decided: render the BACK of a ball band
-    // instead. The spec block — weight symbol, needle and hook sizes, gauge
-    // square, care icons — is the knitter's own language, reads instantly, and
-    // carries no logo. In the results card, drop the brand line entirely rather
-    // than inventing one, and keep only Fibre content, Weight category and
-    // Yardage, which is what the scanner genuinely reads off the label.
+    // The ball band in this art is an invented brand (Fernside Yarns), which
+    // retires the old Red Heart label and the trademark risk it carried.
     title: "Yarn Scanner",
     description:
       "Point your camera at a ball band. Skeined reads the brand, weight and fibre straight into your stash.",
     image: featureYarnScan,
     frameMobile: "1200 / 800",
-    alt: "Scanning a yarn label to read its brand, weight and fibre",
+    alt: "Scanning a ball band and adding the yarn it found to the stash",
   },
   {
     title: "Craft Assistant",
@@ -76,16 +66,15 @@ export const features: Feature[] = [
       "Stuck on a stitch mid-row? Ask and get an answer right there, without losing your place.",
     image: featureAssistant,
     frameMobile: "1200 / 800",
-    alt: "The craft assistant answering a stitch question",
+    alt: "Pressing a stitch abbreviation mid-row to see what it means",
   },
   {
     title: "On Your Lock Screen",
     description:
       "Your row and your time stay on the Lock Screen while you work. Add a row without unlocking, and it keeps counting offline.",
     image: featureLiveActivity,
-    frameMobile: "1200 / 675",
-    insetClass: "px-[12%] sm:px-[14%]",
-    alt: "The row counter running on the iPhone Lock Screen",
+    frameMobile: "1200 / 800",
+    alt: "The row counter on the iPhone Lock Screen, with +1 and Pause",
   },
 ];
 
