@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 /**
- * Site-wide invitation to the Android beta.
+ * Site-wide invitation to early access (once "testers wanted": the app is
+ * finished and approved, so it is framed as getting in early, not testing).
  *
  * Deliberately a banner and not a timed pop-up. The site's one job is the
  * waitlist, and a modal that interrupts someone on their way to that form
@@ -50,9 +51,9 @@ export default function BetaBanner() {
     <div className="sticky top-0 z-50 bg-mulberry text-page">
       <div className="mx-auto flex max-w-content items-center gap-3 px-5 py-2.5 sm:px-10">
         <p className="min-w-0 flex-1 text-[13px] leading-snug sm:text-sm">
-          <span className="font-semibold">Testers wanted.</span>{" "}
+          <span className="font-semibold">Early access is open.</span>{" "}
           <span className="text-page/80">
-            Try Skeined on iPhone or Android before anyone else, and help shape it.
+            Get Skeined on iPhone or Android before launch, and help shape what comes next.
           </span>{" "}
           <Link
             to="/beta"
