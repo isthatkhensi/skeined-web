@@ -63,7 +63,7 @@ export const features: Feature[] = [
   {
     title: "Craft Assistant",
     description:
-      "Not sure what \u201cinv dec\u201d means? Press and hold any stitch for a plain explanation and a tutorial, without losing your place.",
+      "Not sure what \u201csc2tog\u201d means? Press and hold any stitch for a plain explanation and a tutorial, without losing your place.",
     image: featureAssistant,
     frameMobile: "1200 / 800",
     alt: "Pressing a stitch abbreviation mid-row to see what it means",
