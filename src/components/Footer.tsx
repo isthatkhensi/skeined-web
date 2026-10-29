@@ -105,7 +105,18 @@ export default function Footer() {
 
         {/* bottom bar: copyright + legal */}
         <div className="flex flex-col items-center gap-4 border-t border-ink/15 pt-8 text-sm text-ink/90 sm:flex-row sm:justify-between">
-          <p>© 2026 Skeined. All rights reserved.</p>
+          <p>
+            ©{' '}
+            <a
+              href="https://malhq.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-ink"
+            >
+              2026 MalHQ (Pty) Ltd
+            </a>
+            . All rights reserved.
+          </p>
           <nav className="flex items-center gap-6">
             <Link
               to="/privacy"
